@@ -49,13 +49,13 @@ const Summary = () => {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button
+      <button
         onClick={onCheckout}
         disabled={items.length === 0}
-        className="w-full mt-6"
+        className="h-[2.8rem] w-full mt-6 bg-[#009EE3] rounded-md text-white font-normal hover:bg-[#007eb5] transition flex justify-center items-center"
       >
-        Checkout
-      </Button>
+        <img src="./mp.svg" alt="mp" className="mr-2" /> Pagar con Mercado Pago
+      </button>
     </div>
   );
 };
