@@ -1,4 +1,23 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-  
+@tailwind components;
+@tailwind utilities;
+
+.slider-track {
+  animation: scroll 50s linear infinite;
+  -webkit-animation: scroll 50s linear infinite;
+  width: calc(200px * 40);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-200px * 7));
+    -webkit-transform: translateX(calc(-200px * 7));
+  }
+}
