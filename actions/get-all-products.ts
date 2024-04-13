@@ -1,30 +1,12 @@
 import { Product } from "@/types";
-import queryString from "query-string";
-
-interface Query {
-  categoryId?: string;
-  colorId?: string;
-  isFeatured?: boolean;
-}
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
 let randomNumberGenerator = (() => Math.ceil(Math.random() * 100000))();
 setInterval(() => (randomNumberGenerator = Math.ceil(Math.random() * 60)), 30); // llamamos a la funtion randomNumberGenerator() cada 30s. Con esto el numero en max-age=X cambia cada 30s, cuando cambia el numero de max-age y se refresca la pagina se hace nuevamente la peticion a al servidor
 
-export default async function getProductsFeatured(
-  query: Query
-): Promise<Product[]> {
-  const url = queryString.stringifyUrl({
-    url: URL,
-    query: {
-      categoryId: query.categoryId,
-      colorId: query.colorId,
-      isFeatured: query.isFeatured,
-    },
-  });
-
-  const res = await fetch(url, {
+export default async function getAllProducts(): Promise<Product[]> {
+  const res = await fetch(URL, {
     headers: {
       // "Cache-Control": "must-revalidate, no-cache, no-store, max-age=5",
       "Cache-Control": `must-revalidate, max-age=${randomNumberGenerator}`,

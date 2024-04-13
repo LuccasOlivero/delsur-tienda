@@ -30,6 +30,7 @@ export default async function CategoryPage({
   const colors = await getColors();
   const category = await getCategory(params.categoryId);
 
+  console.log(products);
   return (
     <div className="bg-white">
       <Container>
@@ -38,7 +39,7 @@ export default async function CategoryPage({
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <MobileFilters colors={colors} />
             <div className="hidden lg:block">
-              <Filter valueKey="colorId" name="Colors" data={colors} />
+              <Filter valueKey="colorId" name="Colores" data={colors} />
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               {products.length === 0 && <NoResults />}
