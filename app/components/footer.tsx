@@ -1,32 +1,46 @@
+import Image from "next/image";
+
 export default function Footer() {
-  const cardStyles = "text-center gap-y-2 h-full grid grid-cols-1 grid-rows-2";
+  const cardStyles =
+    "text-center gap-y-2 px-2 h-full grid grid-cols-1 grid-rows-2";
+
   return (
     <footer className="bg-white border-t flex justify-center flex-col items-center">
       <section className="grid grid-cols-3 gap-3 p-10 max-w-screen-2xl">
         <div className={cardStyles}>
-          <img src="./payment.svg" alt="safe" className="w-[3.5rem] m-auto" />
+          <Image
+            src="/payment.svg"
+            alt="safe"
+            className="m-auto"
+            width={80}
+            height={80}
+            loading="lazy"
+          />
 
           <div className="h-full w-full">
             <h3 className="font-medium text-base">Elegí cómo pagar</h3>
-            <p className="font-light text-sm">
-              Podés pagar con tarjetam, débito o hasta 12 cuotas sin tarjeta con
+            <p className="font-light text-sm text-pretty">
+              Podés pagar con tarjeta, débito o hasta 12 cuotas sin tarjeta con
               Mercado Crédito.
             </p>
           </div>
         </div>
 
         <div className={cardStyles}>
-          <img
-            src="./shipping.svg"
+          <Image
+            src="/shipping.svg"
             alt="shipping"
-            className="w-[3.5rem] m-auto"
+            className="m-auto"
+            width={70}
+            height={70}
+            loading="lazy"
           />
 
           <div className="h-full w-full">
-            <h3 className="font-medium text-base">
+            <h3 className="font-medium text-base ">
               Envío gratis en todos los productos
             </h3>
-            <p className="font-light text-sm">
+            <p className="font-light text-sm text-pretty">
               Solo por estar registrado en Mercado Libre tenés envíos gratis en
               miles de productos. Es un beneficio de Mercado Puntos.
             </p>
@@ -34,11 +48,18 @@ export default function Footer() {
         </div>
 
         <div className={cardStyles}>
-          <img src="./safe.svg" alt="safe" className="w-[3.5rem] m-auto" />
+          <Image
+            src="/safe.svg"
+            alt="safe"
+            className="m-auto"
+            width={70}
+            height={70}
+            loading="lazy"
+          />
 
           <div className="h-full w-full">
             <h3 className="font-medium text-base">Seguridad</h3>
-            <p className="font-light text-sm">
+            <p className="font-light text-sm text-pretty">
               No te gusta? ¡Devolvelo! En Mercado Libre, no hay nada que no
               puedas hacer, porque estás siempre protegido.
             </p>
@@ -54,7 +75,7 @@ export default function Footer() {
           Echo por{" "}
           <a
             href="https://www.linkedin.com/in/lucas-olivero-319090264/"
-            className="hover:font-semibold"
+            className="hover:font-semibold hover:text-[#3782F7]"
           >
             Lucas Olivero
           </a>
