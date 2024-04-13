@@ -4,7 +4,6 @@ import queryString from "query-string";
 interface Query {
   categoryId?: string;
   colorId?: string;
-  sizeId?: string;
   isFeatured?: boolean;
 }
 
@@ -19,7 +18,6 @@ export default async function getProducts(query: Query): Promise<Product[]> {
     query: {
       categoryId: query.categoryId,
       colorId: query.colorId,
-      sizeId: query.sizeId,
       isFeatured: query.isFeatured,
     },
   });

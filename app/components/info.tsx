@@ -1,7 +1,6 @@
 "use client";
 
 import { ShoppingCart } from "lucide-react";
-
 import { Product } from "@/types";
 import Currency from "./ui/currency";
 import Button from "./ui/button";
@@ -29,10 +28,6 @@ export default function Info({ data }: InfoProps) {
       </div>
       <hr className="my-4" />
       <div className="flex flex-col gap-y-6">
-        <div className="flex items-center gap-x-4">
-          <h3 className="font-semibold text-black">Size:</h3>
-          <div>{data?.size?.value}</div>
-        </div>
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">Color:</h3>
           <div
