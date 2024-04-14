@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-white border-t flex justify-center flex-col items-center">
-      <section className="grid grid-cols-3 gap-3 p-10 max-w-screen-2xl">
+      <section className="grid grid-cols-3 gap-3 p-10 mx-auto max-w-screen-xl">
         <div className={cardStyles}>
           <Image
             src="/payment.svg"

@@ -1,7 +1,7 @@
 export default function Slider() {
   const items = Array.from({ length: 18 }, (_, index) => (
     <div key={index} className="w-[10rem]">
-      Envío gratis
+      ¡Envío gratis!
     </div>
   ));
 

@@ -1,14 +1,16 @@
 "use client";
 
-import { Product } from "@/types";
 import Image from "next/image";
+import { Product } from "@/types";
+import { MouseEventHandler } from "react";
+import { useRouter } from "next/navigation";
+
+import useCart from "@/hooks/use-cart";
+import usePreviewModal from "@/hooks/use-review-modals";
+
+import Currency from "./currency";
 import IconButton from "./icon-button";
 import { Expand, ShoppingCart } from "lucide-react";
-import Currency from "./currency";
-import { useRouter } from "next/navigation";
-import { MouseEventHandler } from "react";
-import usePreviewModal from "@/hooks/use-review-modals";
-import useCart from "@/hooks/use-cart";
 
 interface ProductCard {
   data: Product;
@@ -35,7 +37,7 @@ export default function ProductCard({ data }: ProductCard) {
 
   return (
     <div
-      className="group cursor-pointer rounded-xl border p-3 space-y-4 bg-white"
+      className="group cursor-pointer rounded-xl border p-3 space-y-4 bg-white shadow-sm"
       onClick={handleClick}
     >
       {/* images and actions */}
@@ -61,11 +63,13 @@ export default function ProductCard({ data }: ProductCard) {
           </div>
         </div>
       </div>
+
       {/* description */}
       <div>
         <p className="font-semibol text-lg">{data.name}</p>
         <p className="text-sm text-green-500 font-semibold">Envío gratis</p>
       </div>
+
       {/* price */}
       <div className="flex items-center justify-between">
         <Currency value={data?.price} />
