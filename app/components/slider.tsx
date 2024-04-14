@@ -6,7 +6,7 @@ export default function Slider() {
   ));
 
   return (
-    <div className="bg-black w-full h-[2.5rem] text-white font-semibold text-nowrap text-base overflow-hidden">
+    <div className="bg-slate-900 w-full h-[2.5rem] text-white font-semibold text-nowrap text-base overflow-hidden">
       <div className="slider-track">{items}</div>
     </div>
   );

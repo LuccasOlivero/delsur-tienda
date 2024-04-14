@@ -37,7 +37,7 @@ export default function ProductCard({ data }: ProductCard) {
 
   return (
     <div
-      className="group cursor-pointer rounded-xl border p-3 space-y-4 bg-white shadow-sm"
+      className="group cursor-pointer rounded-xl border p-2 space-y-4 bg-white shadow-sm"
       onClick={handleClick}
     >
       {/* images and actions */}
@@ -66,12 +66,12 @@ export default function ProductCard({ data }: ProductCard) {
 
       {/* description */}
       <div>
-        <p className="font-semibol text-lg">{data.name}</p>
+        <p className="font-semibol text-base">{data.name}</p>
         <p className="text-sm text-green-500 font-semibold">Envío gratis</p>
       </div>
 
       {/* price */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between text-xl">
         <Currency value={data?.price} />
       </div>
     </div>

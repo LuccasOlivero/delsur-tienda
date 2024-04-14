@@ -2,7 +2,7 @@ interface CategoriesCardsProps {
   title: string;
   iconPath: string;
   description: string;
-  btn: string;
+  label: string;
 }
 
 export default function CategoriesCards() {
@@ -12,43 +12,48 @@ export default function CategoriesCards() {
         title="Medios de pago"
         description="Paga tus compras de forma rápida y segura"
         iconPath="./wallet.svg"
-        btn="Ver medios de pago"
+        label="Ver medios de pago"
       />
       <CardTest
         title="Menos de $20.000"
         description="Paga tus compras de forma rápida y segura"
         iconPath="./lowerPrice.svg"
-        btn="Ver precios bajos"
+        label="Ver precios bajos"
       />
       <CardTest
         title="Más vendidos"
         description="Paga tus compras de forma rápida y segura"
         iconPath="./mostSell.svg"
-        btn="Ver más vendidos"
+        label="Ver más vendidos"
       />
       <CardTest
         title="Decoración"
         description="Paga tus compras de forma rápida y segura"
         iconPath="./decoration.svg"
-        btn="Ver vecoración"
+        label="Ver vecoración"
       />
       <CardTest
         title="Herramientas"
         description="Paga tus compras de forma rápida y segura"
         iconPath="./tools.svg"
-        btn="Ver herramientas"
+        label="Ver herramientas"
       />
       <CardTest
         title="Electrónica"
         description="Paga tus compras de forma rápida y segura"
         iconPath="./electronic.svg"
-        btn="Ver electrónica"
+        label="Ver electrónica"
       />
     </section>
   );
 }
 
-function CardTest({ title, iconPath, description, btn }: CategoriesCardsProps) {
+function CardTest({
+  title,
+  iconPath,
+  description,
+  label,
+}: CategoriesCardsProps) {
   return (
     <div className="w-full bg-[#f2f2f2] border shadow-sm rounded-lg p-2 flex flex-col text-center justify-between items-center">
       <h4 className="font-semibold">{title}</h4>
@@ -59,9 +64,9 @@ function CardTest({ title, iconPath, description, btn }: CategoriesCardsProps) {
 
       {/* description */}
       <p className="font-light text-xs pb-4">{description}</p>
-      <button className="bg-slate-900 h-6 w-full text-white rounded-md flex items-center justify-center font-semibold text-xs">
-        {btn}
-      </button>
+      <span className="bg-[#3877d4] h-6 w-full text-white rounded-md flex items-center justify-center font-semibold text-xs">
+        {label}
+      </span>
     </div>
   );
 }

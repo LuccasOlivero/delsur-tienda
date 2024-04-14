@@ -12,6 +12,7 @@ export const revalidate = 0;
 export default async function HomePage() {
   // portada de la pagina principal de la tienda
   const billboard = await getBillboard("04a7d02b-9fbb-4e98-93bd-0f9ac3b346bd");
+
   const productsFeatured = await getProductsFeatured({ isFeatured: true });
   const allProducts = await getAllProducts();
 
@@ -24,7 +25,7 @@ export default async function HomePage() {
 
         <div className="flex flex-col gap-y-8 p-3 bg-[#f2f2f2] rounded-lg shadow-md">
           <ProductList
-            className="gap-3"
+            className="gap-1"
             title="Más vendidos del mes"
             products={productsFeatured}
           />
@@ -38,7 +39,7 @@ export default async function HomePage() {
           />
         </div>
 
-        {/* ACA VAN CARDS DE CATEGORIAS, si, otra mas */}
+        <CategoriesCards />
       </div>
     </Container>
   );
