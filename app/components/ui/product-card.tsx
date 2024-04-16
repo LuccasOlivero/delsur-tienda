@@ -43,8 +43,8 @@ export default function ProductCard({ data }: ProductCard) {
       {/* images and actions */}
       <div className="aspect-square rounded-xl relative">
         <Image
-          src={data?.images?.[0].url}
-          alt="Image"
+          src={data?.images?.[0]?.url}
+          alt="Image product"
           fill
           className="aspect-square object-cover rounded-md"
         />
