@@ -10,7 +10,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         type={type}
         className={cn(
-          ` 
+          `
             w-auto 
             rounded-full 
           bg-black
