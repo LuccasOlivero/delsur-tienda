@@ -8,6 +8,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
 import { Urbanist } from "next/font/google";
+import ProgressBarProvider from "@/providers/progress-bar-provider";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ProgressBarProvider />
         <ModalProvider />
         <ToastProvider />
         <Navbar />
