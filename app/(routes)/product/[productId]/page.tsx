@@ -1,5 +1,6 @@
 import getProduct from "@/actions/get-product";
 import getProducts from "@/actions/get-products";
+
 import Gallery from "@/app/components/gallery";
 import Info from "@/app/components/info";
 import ProductList from "@/app/components/product-list";
@@ -32,7 +33,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
           </div>
           <hr className="my-10" />
-          <ProductList title="Related Items" items={suggestedProducts} />
+          <ProductList
+            title="Related Items"
+            products={suggestedProducts}
+            className=""
+          />
         </div>
       </Container>
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
-import PreviewModal from "@/app/components/preview-modal";
 import { useEffect, useState } from "react";
+import PreviewModal from "@/app/components/preview-modal";
 
 export default function ModalProvider() {
   const [isMounded, setIsMounted] = useState(false);

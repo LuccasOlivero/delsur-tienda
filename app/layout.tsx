@@ -1,14 +1,14 @@
-import "./globals.css";
-import type { Metadata } from "next";
-
 import ModalProvider from "@/providers/modal-provider";
 import ToastProvider from "@/providers/toast-provider";
+import ProgressBarProvider from "@/providers/progress-bar-provider";
 
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
 import { Urbanist } from "next/font/google";
-import ProgressBarProvider from "@/providers/progress-bar-provider";
+
+import "./globals.css";
+import type { Metadata } from "next";
 
 const font = Urbanist({ subsets: ["latin"] });
 

@@ -2,13 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 import getCategories from "@/actions/get-catgories";
+import getAllProducts from "@/actions/get-all-products";
 
 import Slider from "./slider";
 import MainNav from "./main-nav";
 import SearchBar from "./search-bar";
 import NavbarActions from "./navbar-actions";
 import Container from "./ui/container";
-import getAllProducts from "@/actions/get-all-products";
 
 export const revalidate = 0;
 

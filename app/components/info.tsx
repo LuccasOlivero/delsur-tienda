@@ -1,11 +1,14 @@
 "use client";
 
-import { ShoppingCart } from "lucide-react";
+import { MouseEventHandler } from "react";
 import { Product } from "@/types";
+
+import useCart from "@/hooks/use-cart";
+
+import { ShoppingCart } from "lucide-react";
+
 import Currency from "./ui/currency";
 import Button from "./ui/button";
-import useCart from "@/hooks/use-cart";
-import { MouseEventHandler } from "react";
 
 interface InfoProps {
   data: Product;
