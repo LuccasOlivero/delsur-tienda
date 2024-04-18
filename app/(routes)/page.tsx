@@ -18,7 +18,7 @@ export default async function HomePage() {
 
   return (
     <Container>
-      <div className="">
+      <div>
         <Billboard data={billboard} />
 
         <CategoriesCards />

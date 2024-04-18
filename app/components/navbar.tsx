@@ -21,13 +21,13 @@ export default async function Navbar() {
       <div className="border-b bg-white">
         <Container>
           <div className="relative flex h-16 w-full items-center">
-            <Link href="/" className="rounded-full overflow-hidden">
+            <Link href="/" className="rounded-full overflow-hidden h-12">
               <Image
-                priority
+                priority={true}
                 src="/logo.jpeg"
                 alt="safe"
-                width={128}
-                height={128}
+                width={120}
+                height={0}
               />
             </Link>
 

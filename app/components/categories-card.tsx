@@ -4,46 +4,58 @@ interface CategoriesCardsProps {
   description: string;
   label: string;
 }
+const categoriesData = [
+  {
+    title: "Medios de pago",
+    description: "Paga tus compras de forma rápida y segura",
+    iconPath: "./wallet.svg",
+    label: "Ver medios de pago",
+  },
+  {
+    title: "Menos de $20.000",
+    description: "Encuentra productos por menos de $20.000",
+    iconPath: "./lowerPrice.svg",
+    label: "Ver precios bajos",
+  },
+  {
+    title: "Más vendidos",
+    description: "Descubre los productos más populares",
+    iconPath: "./mostSell.svg",
+    label: "Ver más vendidos",
+  },
+  {
+    title: "Decoración",
+    description: "Explora una amplia selección de decoración para tu hogar",
+    iconPath: "./decoration.svg",
+    label: "Ver decoración",
+  },
+  {
+    title: "Herramientas",
+    description: "Encuentra las herramientas adecuadas para tus proyectos",
+    iconPath: "./tools.svg",
+    label: "Ver herramientas",
+  },
+  {
+    title: "Electrónica",
+    description: "Descubre las últimas novedades en electrónica",
+    iconPath: "./electronic.svg",
+    label: "Ver electrónica",
+  },
+  // Puedes agregar más objetos de categorías aquí según sea necesario
+];
 
 export default function CategoriesCards() {
   return (
     <section className="relative w-full h-[16rem] grid grid-cols-6 mb-8 gap-x-4">
-      <CardTest
-        title="Medios de pago"
-        description="Paga tus compras de forma rápida y segura"
-        iconPath="./wallet.svg"
-        label="Ver medios de pago"
-      />
-      <CardTest
-        title="Menos de $20.000"
-        description="Paga tus compras de forma rápida y segura"
-        iconPath="./lowerPrice.svg"
-        label="Ver precios bajos"
-      />
-      <CardTest
-        title="Más vendidos"
-        description="Paga tus compras de forma rápida y segura"
-        iconPath="./mostSell.svg"
-        label="Ver más vendidos"
-      />
-      <CardTest
-        title="Decoración"
-        description="Paga tus compras de forma rápida y segura"
-        iconPath="./decoration.svg"
-        label="Ver vecoración"
-      />
-      <CardTest
-        title="Herramientas"
-        description="Paga tus compras de forma rápida y segura"
-        iconPath="./tools.svg"
-        label="Ver herramientas"
-      />
-      <CardTest
-        title="Electrónica"
-        description="Paga tus compras de forma rápida y segura"
-        iconPath="./electronic.svg"
-        label="Ver electrónica"
-      />
+      {categoriesData.map((category, index) => (
+        <CardTest
+          key={index}
+          title={category.title}
+          description={category.description}
+          iconPath={category.iconPath}
+          label={category.label}
+        />
+      ))}
     </section>
   );
 }
@@ -59,7 +71,7 @@ function CardTest({
       <h4 className="font-semibold">{title}</h4>
 
       <div className="rounded-full w-16 h-16 m-auto">
-        <img src={iconPath} />
+        <img src={iconPath} alt="logo" />
       </div>
 
       {/* description */}
