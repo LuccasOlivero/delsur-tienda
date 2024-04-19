@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
   const cardStyles =
-    "text-center gap-y-2 px-2 h-full grid grid-cols-1 grid-rows-2";
+    "relative text-center gap-y-2 px-2 h-full grid grid-cols-1 grid-rows-2";
 
   return (
     <footer className="bg-white border-t flex justify-center flex-col items-center">
@@ -24,6 +24,8 @@ export default function Footer() {
               Mercado Crédito.
             </p>
           </div>
+
+          <span className="absolute w-[.1rem] h-full top-[1rem] right-0 bottom-0 bg-slate-200"></span>
         </div>
 
         <div className={cardStyles}>
@@ -64,6 +66,8 @@ export default function Footer() {
               puedas hacer, porque estás siempre protegido.
             </p>
           </div>
+
+          <span className="absolute w-[.1rem] h-full top-[1rem] left-0 bottom-0 bg-slate-200"></span>
         </div>
       </section>
 
