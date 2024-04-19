@@ -46,9 +46,9 @@ const categoriesData = [
 
 export default function CategoriesCards() {
   return (
-    <section className="relative w-full h-[16rem] grid grid-cols-6 mb-8 gap-x-4">
+    <section className="relative w-full h-[15rem] grid grid-cols-6 mb-8 gap-x-4">
       {categoriesData.map((category, index) => (
-        <CardTest
+        <Card
           key={index}
           title={category.title}
           description={category.description}
@@ -60,12 +60,7 @@ export default function CategoriesCards() {
   );
 }
 
-function CardTest({
-  title,
-  iconPath,
-  description,
-  label,
-}: CategoriesCardsProps) {
+function Card({ title, iconPath, description, label }: CategoriesCardsProps) {
   return (
     <div className="w-full bg-[#f2f2f2] border shadow-sm rounded-lg p-2 flex flex-col text-center justify-between items-center">
       <h4 className="font-semibold">{title}</h4>

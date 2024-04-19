@@ -1,17 +1,17 @@
-import { Image } from "lucide-react";
+import { ImageIcon } from "lucide-react";
 import Container from "../components/ui/container";
 
-export default function Loading() {
+export default function BillboardSkeleton() {
   return (
     <Container>
       <div>
-        {/* <---------------------------- PORTADA LOADER ----------------------------> */}
+        {/* <---------------------------- BILLBOARD LOADER ----------------------------> */}
         <div className="my-4 sm:my-6 lg:my-8 rounded-lg relative aspect-square md:aspect-[2.4/1] h-[18rem] w-full shadow-md skeleton flex items-center justify-center">
-          <Image className="w-10 h-10" size={20} color="gray" />
+          <ImageIcon className="w-10 h-10" size={20} color="gray" />
         </div>
 
         {/* <---------------------------- CARDS LOADER ----------------------------> */}
-        <div className="relative w-full h-[16rem] grid grid-cols-6 mb-8 gap-x-4">
+        <div className="relative w-full h-[15rem] grid grid-cols-6 mb-8 gap-x-4">
           {Array.from({ length: 6 }).map((_, index) => (
             <CardSkeleton key={index} />
           ))}

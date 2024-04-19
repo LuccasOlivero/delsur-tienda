@@ -6,6 +6,7 @@ import Billboard from "../components/billboard";
 import Container from "../components/ui/container";
 import ProductList from "../components/product-list";
 import CategoriesCards from "../components/categories-card";
+import { Suspense } from "react";
 
 export const revalidate = 0;
 
@@ -20,7 +21,6 @@ export default async function HomePage() {
     <Container>
       <div>
         <Billboard data={billboard} />
-
         <CategoriesCards />
 
         <div className="flex flex-col gap-y-8 p-3 bg-[#f2f2f2] rounded-lg shadow-md">
