@@ -12,9 +12,9 @@ export default function NavbarActions() {
   const route = useRouter();
 
   return (
-    <div className="ml-auto flex items-center gap-x-4">
+    <div className="ml-auto flex items-center gap-x-4 ">
       <Button
-        className="flex items-center rounded-full px-4 py-2 bg-slate-900 shadow-sm"
+        className="flex items-center rounded-full px-4 py-2 bg-slate-900 shadow-md"
         onClick={() => route.push("/cart")}
       >
         <ShoppingBag size={20} color="white" />

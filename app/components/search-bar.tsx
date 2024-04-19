@@ -6,7 +6,7 @@ import Fuse from "fuse.js";
 
 import { Product } from "@/types";
 
-import { Search } from "lucide-react";
+import { Search, SearchIcon } from "lucide-react";
 
 interface ProductListProps {
   products?: Product[];
@@ -39,22 +39,28 @@ export default function SearchBar({ products = [] }: ProductListProps) {
   const productResults = result.map((result) => result.item);
 
   return (
-    <form className="relative">
-      <input
-        type="text"
-        placeholder="Buscá productos..."
-        className="shadow-sm bg-[#f2f2f2] border w-[16rem] h-[2.27rem] rounded-3xl px-4 text-sm flex items-center"
-        onChange={onQueryChanged}
-        value={query}
-      />
-      <div className="w-full bg-[#f2f2f2] absolute rounded-lg top-[2.5rem] left-0 z-10 flex flex-col overflow-hidden">
+    <div className="relative">
+      <div className="relative flex h-[2.28rem]">
+        <input
+          type="text"
+          placeholder="Buscá productos..."
+          className="shadow-sm bg-[#f2f2f2] border w-[16rem] h-full rounded-l-3xl px-4 text-sm flex items-center"
+          onChange={onQueryChanged}
+          value={query}
+        />
+        <div className="flex items-center bg-slate-900 shadow-md border h-full w-[3rem] justify-end pr-2 rounded-r-3xl">
+          <SearchIcon className="left-0" size={26} color="white" />
+        </div>
+      </div>
+
+      <div className="w-[16rem] bg-[#f2f2f2] absolute rounded-lg top-[2.5rem] left-0 z-10 flex flex-col overflow-hidden">
         {productResults.map((item) => (
           <SearchedLink key={item.id} item={item.id}>
             <Search className="absolute left-[.3rem] w-4" /> {item.name}
           </SearchedLink>
         ))}
       </div>
-    </form>
+    </div>
   );
 
   function SearchedLink({ children, item }: SearchedLinkProps) {
