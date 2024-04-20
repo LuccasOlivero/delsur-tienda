@@ -23,15 +23,15 @@ export default async function CategoryPage({
   params,
   searchParams,
 }: CategoryPageProps) {
+  const colors = await getColors();
+  const category = await getCategory(params.categoryId);
   const products = await getProducts({
     categoryId: params.categoryId,
     colorId: searchParams.colorId,
   });
-  const colors = await getColors();
-  const category = await getCategory(params.categoryId);
 
   return (
-    <div className="bg-white">
+    <section className="bg-white">
       <Container>
         <Billboard data={category?.billboard} />
 
@@ -47,7 +47,7 @@ export default async function CategoryPage({
               {products.length === 0 && <NoResults />}
 
               <div className="grid p-2 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 bg-[#f2f2f2] rounded-lg shadow-sm">
-                {products.map((item) => (
+                {products?.map((item) => (
                   <ProductCard key={item.id} data={item} />
                 ))}
               </div>
@@ -55,6 +55,6 @@ export default async function CategoryPage({
           </div>
         </div>
       </Container>
-    </div>
+    </section>
   );
 }

@@ -48,8 +48,8 @@ export default function SearchBar({ products = [] }: ProductListProps) {
           onChange={onQueryChanged}
           value={query}
         />
-        <div className="flex items-center bg-black shadow-md border h-full w-[3rem] justify-end pr-2 rounded-r-3xl">
-          <SearchIcon className="left-0" size={26} color="white" />
+        <div className="flex justify-center items-center bg-black shadow-md border h-full w-[3rem] pr-2 rounded-r-3xl">
+          <SearchIcon className="left-0" size={23} color="white" />
         </div>
       </div>
 

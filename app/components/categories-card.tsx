@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface CategoriesCardsProps {
   title: string;
   iconPath: string;
@@ -7,37 +9,37 @@ interface CategoriesCardsProps {
 const categoriesData = [
   {
     title: "Medios de pago",
-    description: "Paga tus compras de forma rápida y segura",
+    description: "Paga de forma rápida y segura",
     iconPath: "./wallet.svg",
     label: "Ver medios de pago",
   },
   {
     title: "Menos de $20.000",
-    description: "Encuentra productos por menos de $20.000",
+    description: "Productos por menos de $20.000",
     iconPath: "./lowerPrice.svg",
     label: "Ver precios bajos",
   },
   {
     title: "Más vendidos",
-    description: "Descubre los productos más populares",
+    description: "Los productos más populares",
     iconPath: "./mostSell.svg",
     label: "Ver más vendidos",
   },
   {
     title: "Decoración",
-    description: "Explora una amplia selección de decoración para tu hogar",
+    description: "Selección perfecta para tu hogar",
     iconPath: "./decoration.svg",
     label: "Ver decoración",
   },
   {
     title: "Herramientas",
-    description: "Encuentra las herramientas adecuadas para tus proyectos",
+    description: "Herramientas para tus proyectos",
     iconPath: "./tools.svg",
     label: "Ver herramientas",
   },
   {
     title: "Electrónica",
-    description: "Descubre las últimas novedades en electrónica",
+    description: "Últimas novedades en electrónica",
     iconPath: "./electronic.svg",
     label: "Ver electrónica",
   },
@@ -46,7 +48,7 @@ const categoriesData = [
 
 export default function CategoriesCards() {
   return (
-    <section className="relative w-full h-[15rem] grid grid-cols-6 mb-8 gap-x-4">
+    <section className="relative w-full grid mb-8 gap-4 md:grid-cols-3 lg:grid-cols-6">
       {categoriesData.map((category, index) => (
         <Card
           key={index}
@@ -62,15 +64,15 @@ export default function CategoriesCards() {
 
 function Card({ title, iconPath, description, label }: CategoriesCardsProps) {
   return (
-    <div className="w-full bg-[#f2f2f2] border shadow-sm rounded-lg p-2 flex flex-col text-center justify-between items-center">
+    <div className="min-h-[15rem] min-w-10 bg-[#f2f2f2] border shadow-sm rounded-lg p-2 flex flex-col text-center justify-between items-center">
       <h4 className="font-semibold">{title}</h4>
 
-      <div className="rounded-full w-16 h-16 m-auto">
-        <img src={iconPath} alt="logo" />
+      <div className="relative rounded-full w-14 h-14 m-auto">
+        <Image src={iconPath} alt="logo" fill />
       </div>
 
       {/* description */}
-      <p className="font-light text-xs pb-4">{description}</p>
+      <p className="font-light text-xs pb-4 text-pretty">{description}</p>
       <span className="bg-[#3877d4] h-6 w-full text-white rounded-md flex items-center justify-center font-semibold text-xs">
         {label}
       </span>
