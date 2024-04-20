@@ -24,7 +24,7 @@ export default function Info({ data }: InfoProps) {
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
-      <span>Envio gratis</span>
+      <span className="text-green-500 font-semibold text-sm">Envio gratis</span>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, quos.
         Blanditiis voluptas expedita, harum optio itaque rem corporis facilis id
@@ -43,7 +43,7 @@ export default function Info({ data }: InfoProps) {
         aperiam delectus cumque sit esse. Odit vero praesentium sit perferendis?
       </p>
       <div className="mt-3 flex items-end justify-between">
-        <span className="text-2xl text-gray-900">
+        <span className="text-3xl text-gray-900 font-semibold">
           <Currency value={data?.price} />
         </span>
       </div>
@@ -58,8 +58,11 @@ export default function Info({ data }: InfoProps) {
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
-        <Button onClick={onAddtoCart} className="flex items-center gap-x-2">
-          Add To Cart
+        <Button
+          onClick={onAddtoCart}
+          className="flex items-center gap-x-2 shadow-lg"
+        >
+          Agregar al carrito
           <ShoppingCart size={20} />
         </Button>
       </div>

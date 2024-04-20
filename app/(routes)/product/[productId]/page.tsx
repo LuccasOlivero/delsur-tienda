@@ -37,7 +37,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <hr className="my-10" />
 
           <ProductList
-            title="Related Items"
+            title="Productos relacionados"
             products={suggestedProducts}
             className=""
           />
