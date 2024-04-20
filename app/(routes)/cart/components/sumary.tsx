@@ -7,6 +7,7 @@ import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
 import Currency from "@/app/components/ui/currency";
 import axios from "axios";
+import Image from "next/image";
 
 const Summary = () => {
   const searchParams = useSearchParams();
@@ -15,12 +16,12 @@ const Summary = () => {
 
   useEffect(() => {
     if (searchParams.get("success")) {
-      toast.success("Payment completed.");
+      toast.success("Pago completado.");
       removeAll();
     }
 
     if (searchParams.get("canceled")) {
-      toast.error("Something went wrong.");
+      toast.error("ALgo salió mal.");
     }
   }, [searchParams, removeAll]);
 
@@ -53,7 +54,8 @@ const Summary = () => {
         disabled={items.length === 0}
         className="h-[2.8rem] w-full mt-6 bg-[#009EE3] rounded-md text-white font-normal hover:bg-[#007eb5] transition flex justify-center items-center"
       >
-        <img src="./mp.svg" alt="mp" className="mr-2" /> Pagar con Mercado Pago
+        <Image src="./mp.svg" alt="mp" fill={true} className="mr-2" /> Pagar con
+        Mercado Pago
       </button>
     </div>
   );
