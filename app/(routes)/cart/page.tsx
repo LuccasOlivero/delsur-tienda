@@ -3,14 +3,16 @@
 import { useEffect, useState } from "react";
 
 import useCart from "@/hooks/use-cart";
-import Container from "@/app/components/ui/container";
+
 import CartItem from "./components/cart-item";
 import Summary from "./components/sumary";
 
+import Container from "@/app/components/ui/container";
+
 export const revalidate = 0;
 
-const CartPage = () => {
-  const [isMounted, setIsMounted] = useState(false);
+export default function CartPage() {
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const cart = useCart();
 
   useEffect(() => {
@@ -45,6 +47,4 @@ const CartPage = () => {
       </Container>
     </div>
   );
-};
-
-export default CartPage;
+}
