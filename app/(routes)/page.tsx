@@ -2,10 +2,10 @@ import getBillboard from "@/actions/get-billboard";
 import getAllProducts from "@/actions/get-all-products";
 import getProductsFeatured from "@/actions/get-products";
 
-import Billboard from "../components/billboard";
-import Container from "../components/ui/container";
-import ProductList from "../components/product-list";
-import CategoriesCards from "../components/categories-card";
+import Billboard from "@/app/components/billboard";
+import Container from "@/app/components/ui/container";
+import ProductList from "@/app/components/product-list";
+import CategoriesCards from "@/app/components/categories-card";
 
 export const revalidate = 0;
 
