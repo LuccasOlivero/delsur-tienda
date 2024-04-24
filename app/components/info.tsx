@@ -25,23 +25,7 @@ export default function Info({ data }: InfoProps) {
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
       <span className="text-green-500 font-semibold text-sm">Envio gratis</span>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, quos.
-        Blanditiis voluptas expedita, harum optio itaque rem corporis facilis id
-        aperiam delectus cumque sit esse. Odit vero praesentium sit perferendis?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, quos.
-        Blanditiis voluptas expedita, harum optio itaque rem corporis facilis id
-        aperiam delectus cumque sit esse. Odit vero praesentium sit perferendis?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, quos.
-        Blanditiis voluptas expedita, harum optio itaque rem corporis facilis id
-        aperiam delectus cumque sit esse. Odit vero praesentium sit perferendis?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, quos.
-        Blanditiis voluptas expedita, harum optio itaque rem corporis facilis id
-        aperiam delectus cumque sit esse. Odit vero praesentium sit perferendis?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, quos.
-        Blanditiis voluptas expedita, harum optio itaque rem corporis facilis id
-        aperiam delectus cumque sit esse. Odit vero praesentium sit perferendis?
-      </p>
+      <p>{data.description}</p>
       <div className="mt-3 flex items-end justify-between">
         <span className="text-3xl text-gray-900 font-semibold">
           <Currency value={data?.price} />
