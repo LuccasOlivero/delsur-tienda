@@ -23,7 +23,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
         <Image
           fill
           src={data ? data?.images[0]?.url : ""}
-          alt=""
+          alt={data?.name}
           className="object-cover object-center"
         />
       </div>

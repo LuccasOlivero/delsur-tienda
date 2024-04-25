@@ -18,7 +18,9 @@ const Summary = () => {
 
   useEffect(() => {
     if (searchParams.get("success")) {
-      toast.success("Pago completado.");
+      toast.success(
+        "Pago completado. Te va a llegar un mail con toda informacion detallada, gracias por tu compra!"
+      );
       removeAll();
     }
 
@@ -36,13 +38,13 @@ const Summary = () => {
   const onCheckout = async () => {
     try {
       setLoading(true);
-      const response = await axios.post(
+      const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
         {
           productIds: items.map((item) => item.id),
         }
       );
-      window.location = response.data.url;
+      window.location = res.data.url;
     } catch (error) {
       throw new Error(`ERROR_SUMARY, ${error}`);
     } finally {
