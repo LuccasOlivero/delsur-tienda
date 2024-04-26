@@ -18,16 +18,19 @@ export default async function Navbar() {
 
   return (
     <>
-      <div className="border-b bg-white">
-        <Container>
+      <Container>
+        <div className="border-b bg-white">
           <div className="relative flex h-16 w-full items-center">
-            <Link href="/" className="rounded-full overflow-hidden h-12">
+            <Link
+              href="/"
+              className="rounded-full overflow-hidden h-12 w-[3.8rem]"
+            >
               <Image
                 priority={true}
                 src="/logo.jpeg"
                 alt="safe"
                 width={120}
-                height={0}
+                height={120}
               />
             </Link>
 
@@ -39,8 +42,8 @@ export default async function Navbar() {
 
             <NavbarActions />
           </div>
-        </Container>
-      </div>
+        </div>
+      </Container>
       <Slider />
     </>
   );

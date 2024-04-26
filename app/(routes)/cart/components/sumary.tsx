@@ -10,7 +10,7 @@ import axios from "axios";
 import Image from "next/image";
 import SpinnerLoading from "@/app/components/ui/spinner-loading";
 
-const Summary = () => {
+export default function Summary() {
   const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
   const items = useCart((state) => state.items);
@@ -19,7 +19,8 @@ const Summary = () => {
   useEffect(() => {
     if (searchParams.get("success")) {
       toast.success(
-        "Pago completado. Te va a llegar un mail con toda informacion detallada, gracias por tu compra!"
+        "Pago completado! Te va a llegar un mail con toda informacion detallada.",
+        { duration: 200 }
       );
       removeAll();
     }
@@ -38,55 +39,58 @@ const Summary = () => {
   const onCheckout = async () => {
     try {
       setLoading(true);
+
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
         {
           productIds: items.map((item) => item.id),
         }
       );
+
       window.location = res.data.url;
+
+      setLoading(false);
     } catch (error) {
       throw new Error(`ERROR_SUMARY, ${error}`);
-    } finally {
-      setLoading(false);
     }
   };
 
   return (
-    <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
+    <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 shadow-lg">
       <h2 className="text-lg font-medium text-gray-900 border-b pb-4">
         Resumen de compra
       </h2>
 
-      <div className="mt-4 space-y-4">
+      <div className="mt-4 space-y-2">
         {products.map((product) => (
           <div
             key={product.id}
             className="flex items-center justify-between border-gray-200"
           >
-            <div className="text-base font-medium text-gray-900 text-pretty">
+            <div className="text-sm font-medium text-gray-900 text-pretty">
               {product.name}
             </div>
-            <Currency value={product.price} />
+            <Currency value={product.price} className="font-normal" />
           </div>
         ))}
         {items.length && (
           <>
             <div className="flex items-center justify-between border-gray-200">
-              <div className="text-base font-medium text-gray-900">Envío</div>
+              <div className="text-sm font-medium text-gray-900">Envío</div>
               <span className="font-semibold text-green-500">Gratis</span>
             </div>
           </>
         )}
         <div className="flex items-center justify-between border-gray-200">
-          <div className="text-base font-medium text-gray-900">Total</div>
+          <div className="text-lg font-medium text-gray-900">Total</div>
           <Currency value={totalPrice} className="text-xl" />
         </div>
       </div>
+
       <button
         onClick={onCheckout}
         disabled={items.length === 0 || loading}
-        className="h-[2.8rem] w-full mt-6 bg-[#009EE3] rounded-md text-white font-normal hover:bg-[#007eb5] transition flex justify-center items-center"
+        className="h-[2.8rem] w-full mt-6 bg-[#009EE3] rounded-md text-white font-normal hover:bg-[#007eb5] transition flex justify-center items-center shadow-sm"
       >
         {loading ? (
           <SpinnerLoading />
@@ -105,6 +109,4 @@ const Summary = () => {
       </button>
     </div>
   );
-};
-
-export default Summary;
+}
