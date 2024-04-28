@@ -21,7 +21,7 @@ export default async function HomePage() {
 
       <CategoriesCards />
 
-      <div className="flex flex-col gap-y-8 p-3 bg-[#f2f2f2] rounded-lg shadow-md">
+      <div className="flex flex-col gap-y-8 p-3 bg-gray-50 rounded-lg shadow-md">
         <ProductList
           className="gap-1"
           title="Más vendidos del mes"
@@ -29,7 +29,7 @@ export default async function HomePage() {
         />
       </div>
 
-      <div className="my-[2rem] flex flex-col gap-y-8 p-3 bg-[#f2f2f2] rounded-lg shadow-md">
+      <div className="my-[2rem] flex flex-col gap-y-8 p-3 bg-gray-50 rounded-lg shadow-md">
         <ProductList
           title="Un poco de todo"
           products={allProducts}

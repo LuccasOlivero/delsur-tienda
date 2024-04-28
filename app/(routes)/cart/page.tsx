@@ -8,12 +8,16 @@ import CartItem from "./components/cart-item";
 import Summary from "./components/sumary";
 
 import Container from "@/app/components/ui/container";
+import ShippingForm from "./components/shipping-form";
+import useShowForm from "@/hooks/use-show-form";
+import { Button } from "@/components/ui/button";
 
 export const revalidate = 0;
 
 export default function CartPage() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const cart = useCart();
+  const { onClose, onOpen, isOpen } = useShowForm();
 
   useEffect(() => {
     setIsMounted(true);
@@ -43,7 +47,17 @@ export default function CartPage() {
               ))}
             </ul>
           </div>
-          <Summary />
+
+          <div className="flex flex-col w-full h-auto lg:col-span-5">
+            {isOpen ? (
+              <ShippingForm />
+            ) : (
+              <Button onClick={onOpen} className="mb-8 bg-black h-[2.8rem]">
+                Completar datos de envío
+              </Button>
+            )}
+            <Summary />
+          </div>
         </div>
       </div>
     </Container>

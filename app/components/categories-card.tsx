@@ -64,7 +64,7 @@ export default function CategoriesCards() {
 
 function Card({ title, iconPath, description, label }: CategoriesCardsProps) {
   return (
-    <div className="min-h-[15rem] min-w-10 bg-[#f2f2f2] border shadow-sm rounded-lg p-2 flex flex-col text-center justify-between items-center">
+    <div className="min-h-[15rem] min-w-10 bg-gray-50 shadow-lg rounded-lg p-2 flex flex-col text-center justify-between items-center">
       <h4 className="font-semibold">{title}</h4>
 
       <div className="relative rounded-full w-14 h-14 m-auto">

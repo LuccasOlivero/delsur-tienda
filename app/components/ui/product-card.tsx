@@ -37,7 +37,7 @@ export default function ProductCard({ data }: ProductCard) {
 
   return (
     <div
-      className="group cursor-pointer rounded-xl border p-2 space-y-4 bg-white shadow-sm"
+      className="group cursor-pointer rounded-xl p-2 space-y-4 bg-white shadow-sm"
       onClick={handleClick}
     >
       {/* images and actions */}

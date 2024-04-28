@@ -44,16 +44,16 @@ export default function SearchBar({ products = [] }: ProductListProps) {
         <input
           type="text"
           placeholder="Buscá productos..."
-          className="shadow-sm bg-[#f2f2f2] border w-[16rem] h-full rounded-l-3xl px-4 text-sm flex items-center"
+          className="shadow-sm bg-slate-50 border w-[16rem] h-full rounded-l-3xl px-4 text-sm flex items-center"
           onChange={onQueryChanged}
           value={query}
         />
-        <div className="flex justify-center items-center bg-black shadow-md border h-full w-[3rem] pr-2 rounded-r-3xl">
+        <div className="flex justify-center items-center bg-black shadow-sm border h-full w-[3rem] pr-2 rounded-r-3xl">
           <SearchIcon className="left-0" size={23} color="white" />
         </div>
       </div>
 
-      <div className="w-[16rem] bg-[#f2f2f2] absolute rounded-lg top-[2.5rem] left-0 z-10 flex flex-col overflow-hidden">
+      <div className="w-[16rem] bg-slate-50 absolute rounded-lg top-[2.5rem] left-0 z-10 flex flex-col overflow-hidden">
         {productResults.map((item) => (
           <SearchedLink key={item.id} item={item.id}>
             <Search className="absolute left-[.3rem] w-4" /> {item.name}
@@ -68,7 +68,7 @@ export default function SearchBar({ products = [] }: ProductListProps) {
       <Link
         onClick={() => setQuery("")}
         href={`/product/${item}`}
-        className="w-full flex items-center font-semibold text-sm py-2 hover:bg-slate-200 pl-6 pr-4"
+        className="w-full flex items-center font-semibold text-sm py-2 hover:bg-slate-100 pl-6 pr-4"
       >
         {children}
       </Link>

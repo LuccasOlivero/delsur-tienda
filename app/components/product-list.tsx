@@ -15,7 +15,7 @@ export default function ProductList({
   className,
 }: ProductListProps) {
   return (
-    <div className="space-y-4 bg-[#f2f2f2] p-2 rounded-lg">
+    <div className="space-y-4 bg-gray-50 p-2 rounded-md">
       <h3 className="font-bold text-2xl">{title}</h3>
       {products.length === 0 && <NoResults />}
       <div
