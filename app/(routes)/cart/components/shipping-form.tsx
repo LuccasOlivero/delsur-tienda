@@ -1,3 +1,11 @@
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+import toast from "react-hot-toast";
+import useShowForm from "@/hooks/use-show-form";
+
 import {
   Form,
   FormControl,
@@ -6,15 +14,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
-import * as z from "zod";
+import { ChevronUpIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ChevronUpIcon } from "lucide-react";
-import useShowForm from "@/hooks/use-show-form";
 import {
   Select,
   SelectContent,
@@ -23,69 +25,28 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const formSchema = z.object({
-  name: z.string().min(3),
-  surname: z.string().min(3),
-  dni: z.coerce.number().min(8),
-  streetAddress: z.string().min(3),
-  houseNumber: z.coerce.number().min(1),
-  city: z.string(),
-  province: z.string().min(3),
-  zipCode: z.coerce.number().min(3),
-  phoneNumberA: z.coerce.number().min(3),
-  emailA: z.string().min(3),
-});
+import { argentinianProvinces, formSchema } from "../validations/formSchema";
 
 export default function ShippingForm() {
   const [loading, setLoading] = useState(false);
-
-  const { onClose } = useShowForm();
+  const { setUserData, onClose, isFormCompleted, onCompleteForm } =
+    useShowForm();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "lucas",
-      surname: "test",
-      dni: 12345678,
-      streetAddress: "sadfasd",
-      houseNumber: 1231,
-      city: "asdsadas",
-      province: "",
-      zipCode: 1231,
-      phoneNumberA: 12312332,
-      emailA: "lucas@gmail.com",
-    },
   });
 
-  const argentinianProvinces: string[] = [
-    "Buenos Aires",
-    "Catamarca",
-    "Chaco",
-    "Chubut",
-    "Córdoba",
-    "Corrientes",
-    "Entre Ríos",
-    "Formosa",
-    "Jujuy",
-    "La Pampa",
-    "La Rioja",
-    "Mendoza",
-    "Misiones",
-    "Neuquén",
-    "Río Negro",
-    "Salta",
-    "San Juan",
-    "San Luis",
-    "Santa Cruz",
-    "Santa Fe",
-    "Santiago del Estero",
-    "Tierra del Fuego",
-    "Tucumán",
-  ];
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    setUserData(data);
+    onCompleteForm();
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
-    // onClose();
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Datos guardados correctamente");
+    }, 1000);
+    return;
   };
 
   return (
@@ -102,8 +63,8 @@ export default function ShippingForm() {
               className="absolute w-5 h-5 right-0 top-0 text-black cursor-pointer"
               onClick={onClose}
             />
-            {/* icono cerrar form */}
 
+            {/* input nombre y apellido  */}
             <FormField
               control={form.control}
               name="name"
@@ -141,6 +102,19 @@ export default function ShippingForm() {
               )}
             />
           </div>
+          {/* <----------------- mensaje de error en el nombre o apellido ----------------->*/}
+          {form.formState.errors?.name && (
+            <FormMessage className="text-red-500">
+              {form.formState.errors.name.message}
+            </FormMessage>
+          )}
+          {form.formState.errors?.surname && (
+            <FormMessage className=" text-red-500">
+              {form.formState.errors.surname.message}
+            </FormMessage>
+          )}
+
+          {/* input dni */}
           <FormField
             control={form.control}
             name="dni"
@@ -158,6 +132,14 @@ export default function ShippingForm() {
               </FormItem>
             )}
           />
+          {/* <----------------- mensaje de error en el dni ----------------->*/}
+          {form.formState.errors?.dni && (
+            <FormMessage className="text-red-500">
+              {form.formState.errors.dni.message}
+            </FormMessage>
+          )}
+
+          {/* input ciudad y provincia */}
           <div className="flex w-full h-full justify-center items-end gap-x-2">
             <div className="w-full h-full">
               <FormField
@@ -211,6 +193,19 @@ export default function ShippingForm() {
               />
             </div>
           </div>
+          {/* <----------------- mensaje de error en el ciudad o provincia ----------------->*/}
+          {form.formState.errors?.city && (
+            <FormMessage className="text-red-500">
+              {form.formState.errors.city.message}
+            </FormMessage>
+          )}
+          {form.formState.errors?.province && (
+            <FormMessage className="text-red-500">
+              {form.formState.errors.province.message}
+            </FormMessage>
+          )}
+
+          {/* input direccion */}
           <FormField
             control={form.control}
             name="streetAddress"
@@ -227,6 +222,14 @@ export default function ShippingForm() {
               </FormItem>
             )}
           />
+          {/* <----------------- mensaje de error en el direccion ----------------->*/}
+          {form.formState.errors?.streetAddress && (
+            <FormMessage className="text-red-500">
+              {form.formState.errors.streetAddress.message}
+            </FormMessage>
+          )}
+
+          {/* input número de casa o dpto */}
           <div className="flex w-full h-full justify-center items-end gap-x-2">
             <FormField
               control={form.control}
@@ -263,7 +266,19 @@ export default function ShippingForm() {
               )}
             />
           </div>
+          {/* <----------------- mensaje de error en el número de casa o dpto ----------------->*/}
+          {form.formState.errors?.houseNumber && (
+            <FormMessage className="text-red-500">
+              {form.formState.errors.houseNumber.message}
+            </FormMessage>
+          )}
+          {form.formState.errors?.zipCode && (
+            <FormMessage className="text-red-500">
+              {form.formState.errors.zipCode.message}
+            </FormMessage>
+          )}
 
+          {/* input teléfono */}
           <FormField
             control={form.control}
             name="phoneNumberA"
@@ -282,6 +297,14 @@ export default function ShippingForm() {
               </FormItem>
             )}
           />
+          {/* <----------------- mensaje de error en el número de celular ----------------->*/}
+          {form.formState.errors?.phoneNumberA && (
+            <FormMessage className="text-red-500">
+              {form.formState.errors.phoneNumberA.message}
+            </FormMessage>
+          )}
+
+          {/* input email */}
           <FormField
             control={form.control}
             name="emailA"
@@ -299,7 +322,16 @@ export default function ShippingForm() {
               </FormItem>
             )}
           />
-          <Button type="submit">Guardar</Button>
+
+          {/* <----------------- mensaje de error en el email ----------------->*/}
+          {form.formState.errors?.emailA && (
+            <FormMessage className="text-red-500">
+              {form.formState.errors.emailA.message}
+            </FormMessage>
+          )}
+          <Button type="submit">
+            {isFormCompleted ? "Actualizar" : "Guardar y enviar"}
+          </Button>
         </form>
       </Form>
     </div>

@@ -35,7 +35,7 @@ export default function CartPage() {
         </h1>
 
         <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
-          <div className="lg:col-span-7 bg-gray-50 shadow-lg rounded-lg px-4 py-6 sm:p-6">
+          <div className="lg:col-span-7 bg-gray-50 shadow-lg rounded-lg px-4 py-6 sm:p-6 sm:mb-12">
             {cart.items.length === 0 && (
               <p className="text-neutral-500">
                 No hay productos en el carrito.

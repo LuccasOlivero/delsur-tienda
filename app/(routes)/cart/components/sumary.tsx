@@ -9,18 +9,20 @@ import Currency from "@/app/components/ui/currency";
 import axios from "axios";
 import Image from "next/image";
 import SpinnerLoading from "@/app/components/ui/spinner-loading";
+import useShowForm from "@/hooks/use-show-form";
 
 export default function Summary() {
   const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
+  const { userData, isFormCompleted, onOpen } = useShowForm();
 
   useEffect(() => {
     if (searchParams.get("success")) {
       toast.success(
-        "Pago completado! Te va a llegar un mail con toda informacion detallada.",
-        { duration: 200 }
+        "Pago completado! Te va a llegar un mail con info de tu pedido.",
+        { duration: 5000 }
       );
       removeAll();
     }
@@ -37,6 +39,12 @@ export default function Summary() {
   }, 0);
 
   const onCheckout = async () => {
+    if (!isFormCompleted) {
+      toast.error("Completá el formulario antes de pagar.");
+      onOpen();
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -44,19 +52,20 @@ export default function Summary() {
         `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
         {
           productIds: items.map((item) => item.id),
+          userData,
         }
       );
 
       window.location = res.data.url;
-
-      setLoading(false);
     } catch (error) {
       throw new Error(`ERROR_SUMARY, ${error}`);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:mt-0 lg:p-8 shadow-lg">
+    <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 sm:mt-8 lg:mt-0 lg:p-8 shadow-lg">
       <h2 className="text-lg font-medium text-gray-900 border-b pb-4">
         Resumen de compra
       </h2>
