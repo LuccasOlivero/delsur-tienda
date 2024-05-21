@@ -17,7 +17,7 @@ export const revalidate = 0;
 export default function CartPage() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const cart = useCart();
-  const { onClose, onOpen, isOpen } = useShowForm();
+  const { onOpen, isOpen } = useShowForm();
 
   useEffect(() => {
     setIsMounted(true);
@@ -52,7 +52,10 @@ export default function CartPage() {
             {isOpen ? (
               <ShippingForm />
             ) : (
-              <Button onClick={onOpen} className="mb-8 bg-black h-[2.8rem]">
+              <Button
+                onClick={onOpen}
+                className="mb-8 bg-black h-[2.8rem] shadow-lg"
+              >
                 Completar datos de envío
               </Button>
             )}

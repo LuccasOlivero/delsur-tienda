@@ -18,7 +18,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
   };
 
   return (
-    <li className="flex">
+    <li className="flex border border-red-500">
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
         <Image
           fill

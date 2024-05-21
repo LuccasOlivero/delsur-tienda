@@ -45,7 +45,7 @@ export default function ShippingForm() {
     setTimeout(() => {
       setLoading(false);
       toast.success("Datos guardados correctamente");
-    }, 1000);
+    }, 600);
     return;
   };
 

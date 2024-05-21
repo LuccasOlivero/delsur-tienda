@@ -71,6 +71,7 @@ export default function Summary() {
       </h2>
 
       <div className="mt-4 space-y-2">
+        {/* renderiza los productos en el carrito */}
         {products.map((product) => (
           <div
             key={product.id}
@@ -82,6 +83,7 @@ export default function Summary() {
             <Currency value={product.price} className="font-normal" />
           </div>
         ))}
+
         {items.length && (
           <>
             <div className="flex items-center justify-between border-gray-200">
@@ -90,6 +92,7 @@ export default function Summary() {
             </div>
           </>
         )}
+
         <div className="flex items-center justify-between border-gray-200">
           <div className="text-lg font-medium text-gray-900">Total</div>
           <Currency value={totalPrice} className="text-xl" />

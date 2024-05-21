@@ -20,8 +20,8 @@ export default function Footer() {
           <div className="h-full w-full">
             <h3 className="font-medium text-base">Elegí cómo pagar</h3>
             <p className="font-light text-sm text-pretty">
-              Podés pagar con tarjeta, débito o hasta 12 cuotas sin tarjeta con
-              Mercado Crédito.
+              Podés pagar con tarjeta, tarjeta de débito o credito hasta 12
+              cuotas sin tarjeta con Mercado Crédito!
             </p>
           </div>
 
@@ -43,8 +43,8 @@ export default function Footer() {
               Envío gratis en todos los productos
             </h3>
             <p className="font-light text-sm text-pretty">
-              Solo por estar registrado en Mercado Libre tenés envíos gratis en
-              miles de productos. Es un beneficio de Mercado Puntos.
+              Con la compra de cualquier producto tenés envíos gratis. Es un
+              beneficio que le damos a todos nuestros clientes.
             </p>
           </div>
         </div>
@@ -62,8 +62,8 @@ export default function Footer() {
           <div className="h-full w-full">
             <h3 className="font-medium text-base">Seguridad</h3>
             <p className="font-light text-sm text-pretty">
-              No te gusta? ¡Devolvelo! En Mercado Libre, no hay nada que no
-              puedas hacer, porque estás siempre protegido.
+              Te garantiazamos la llegada del productos en menos de 12 dias. Con
+              nosotros tu compra está siempre protegida.
             </p>
           </div>
 
