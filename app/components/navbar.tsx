@@ -23,7 +23,7 @@ export default async function Navbar() {
           <div className="relative flex h-16 w-full items-center">
             <Link
               href="/"
-              className="rounded-full overflow-hidden h-12 min-h-10 w-[5rem] min-w-[3rem]"
+              className="rounded-full overflow-hidden h-12 min-h-10 w-[5rem] min-w-[3rem] max-lg:w-[3rem] max-lg:h-[3rem]"
             >
               <img
                 src="/logo.jpeg"
@@ -34,7 +34,7 @@ export default async function Navbar() {
 
             <MainNav data={categories} />
 
-            <div className="w-full flex justify-end pr-4">
+            <div className="w-full flex justify-end pr-4 max-lg:hidden">
               <SearchBar products={allProducts} />
             </div>
 
@@ -42,6 +42,7 @@ export default async function Navbar() {
           </div>
         </div>
       </Container>
+
       <Slider />
     </>
   );

@@ -89,7 +89,7 @@ function Card({
 }: CategoriesCardsProps) {
   return (
     <div
-      className="min-h-[15rem] min-w-10 bg-gray-50 shadow-lg rounded-lg p-2 flex flex-col text-center justify-between items-center"
+      className="min-h-[15rem] min-w-10 bg-gray-50 shadow-lg rounded-lg p-2 flex flex-col text-center justify-between items-center cursor-pointer"
       onClick={onClick}
     >
       <h4 className="font-semibold">{title}</h4>

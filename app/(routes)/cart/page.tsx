@@ -48,7 +48,7 @@ export default function CartPage() {
             </ul>
           </div>
 
-          <div className="flex flex-col w-full h-auto lg:col-span-5">
+          <div className="flex flex-col w-full h-auto lg:col-span-5 max-sm:mt-10">
             {isOpen ? (
               <ShippingForm />
             ) : (

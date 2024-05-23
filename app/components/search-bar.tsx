@@ -17,12 +17,13 @@ interface SearchedLinkProps {
   item: string;
 }
 
+// Configuración de fuse.js para la búsqueda de productos
+const fuseOptions = {
+  keys: ["name"],
+};
+
 export default function SearchBar({ products = [] }: ProductListProps) {
   const [query, setQuery] = useState<string>("");
-
-  const fuseOptions = {
-    keys: ["name"],
-  };
 
   const fuse = new Fuse(products, fuseOptions);
   const result = fuse.search(query);
@@ -44,7 +45,7 @@ export default function SearchBar({ products = [] }: ProductListProps) {
         <input
           type="text"
           placeholder="Buscá productos..."
-          className="shadow-sm bg-slate-50 border w-[16rem] h-full rounded-l-3xl px-4 text-sm flex items-center"
+          className="shadow-sm bg-slate-50 border w-full h-full rounded-l-3xl px-4 text-sm flex items-center"
           onChange={onQueryChanged}
           value={query}
         />
@@ -53,7 +54,7 @@ export default function SearchBar({ products = [] }: ProductListProps) {
         </div>
       </div>
 
-      <div className="w-[16rem] bg-slate-50 absolute rounded-lg top-[2.5rem] left-0 z-10 flex flex-col overflow-hidden">
+      <div className="w-full bg-slate-50 absolute rounded-lg top-[2.5rem] left-0 z-10 flex flex-col overflow-hidden">
         {productResults.map((item) => (
           <SearchedLink key={item.id} item={item.id}>
             <Search className="absolute left-[.3rem] w-4" /> {item.name}

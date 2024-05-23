@@ -65,7 +65,7 @@ export default function Summary() {
   };
 
   return (
-    <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 sm:mt-8 lg:mt-0 lg:p-8 shadow-lg">
+    <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 sm:mt-8 lg:mt-0 lg:p-8 shadow-lg max-sm:mt-5">
       <h2 className="text-lg font-medium text-gray-900 border-b pb-4">
         Resumen de compra
       </h2>

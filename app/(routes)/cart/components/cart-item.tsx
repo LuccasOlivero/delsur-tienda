@@ -22,27 +22,32 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
         <Image
           fill
-          src={data ? data?.images[0]?.url : ""}
+          src={data ? data?.images[0].url : ""}
           alt={data?.name}
           className="object-cover object-center"
         />
       </div>
-      <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
+
+      <div className="relative ml-2 flex flex-1 flex-col justify-between">
         <div className="absolute z-10 right-0 top-0">
           <IconButton onClick={onRemove} icon={<X size={16} />} />
         </div>
+
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div className="flex justify-between">
-            <p className="text-xl font-semibold text-black">{data.name}</p>
+            <p className="text-xl font-semibold text-black max-sm:text-lg">
+              {data.name}
+            </p>
           </div>
-          <span className="text-base font-semibold text-black">
-            Unidades: 1
-          </span>
-          <div className="mt-1 flex text-sm">
+
+          <div className="mt-1 flex text-sm max-sm:text-xs max-sm:mt-0">
             <p className="text-gray-500">{data.color.name}</p>
           </div>
-          <Currency value={data.price} className="text-xl" />
+          <Currency value={data.price} className="text-xl max-sm:text-lg" />
         </div>
+        <span className="text-base font-semibold text-black max-sm:text-sm">
+          Unidades: 1
+        </span>
       </div>
     </li>
   );

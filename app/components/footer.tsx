@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-white border-t flex justify-center flex-col items-center">
-      <section className="grid grid-cols-3 gap-3 p-10 mx-auto max-w-screen-xl">
+      <section className="grid grid-cols-3 gap-3 p-10 mx-auto max-w-screen-xl max-sm:grid-cols-1">
         <div className={cardStyles}>
           <Image
             src="/payment.svg"
@@ -25,7 +25,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <span className="absolute w-[.1rem] h-full top-[1rem] right-0 bottom-0 bg-slate-200"></span>
+          <span className="absolute w-[.1rem] h-full top-[1rem] right-0 bottom-0 bg-slate-200 max-sm:hidden"></span>
         </div>
 
         <div className={cardStyles}>
@@ -67,7 +67,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <span className="absolute w-[.1rem] h-full top-[1rem] left-0 bottom-0 bg-slate-200"></span>
+          <span className="absolute w-[.1rem] h-full top-[1rem] left-0 bottom-0 bg-slate-200 max-sm:hidden"></span>
         </div>
       </section>
 
