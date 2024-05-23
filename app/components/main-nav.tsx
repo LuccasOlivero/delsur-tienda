@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 
 import { Category } from "@/types";
 import { cn } from "../lib/utils";
-import Container from "./ui/container";
 
 interface MainNavProps {
   data: Category[];
@@ -21,13 +20,13 @@ export default function MainNav({ data }: MainNavProps) {
   }));
 
   return (
-    <nav className="mx-4 flex items-center space-x-4 lg:space-x-6">
+    <nav className="mx-4 flex items-center space-x-3 lg:space-x-5">
       {routes.map((route) => (
         <Link
           key={route.href}
           href={route.href}
           className={cn(
-            "text-sm font-medium transition-colors hover:text-black",
+            "text-sm font-medium transition-colors hover:text-black leading-[0.85rem]",
             route.active ? "text-black" : "text-neutral-500"
           )}
         >

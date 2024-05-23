@@ -6,6 +6,7 @@ import Billboard from "@/app/components/billboard";
 import Container from "@/app/components/ui/container";
 import ProductList from "@/app/components/product-list";
 import CategoriesCards from "@/app/components/categories-card";
+import getCategories from "@/actions/get-catgories";
 
 export const revalidate = 0;
 
@@ -14,12 +15,13 @@ export default async function HomePage() {
   const billboard = await getBillboard("04a7d02b-9fbb-4e98-93bd-0f9ac3b346bd");
   const productsFeatured = await getProductsFeatured({ isFeatured: true });
   const allProducts = await getAllProducts();
+  const categories = await getCategories();
 
   return (
     <Container>
       <Billboard data={billboard} />
 
-      <CategoriesCards />
+      <CategoriesCards data={categories} />
 
       <div className="flex flex-col gap-y-8 p-3 bg-gray-50 rounded-lg shadow-md">
         <ProductList
@@ -37,7 +39,7 @@ export default async function HomePage() {
         />
       </div>
 
-      <CategoriesCards />
+      <CategoriesCards data={categories} />
     </Container>
   );
 }

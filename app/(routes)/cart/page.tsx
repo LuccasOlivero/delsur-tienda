@@ -41,7 +41,7 @@ export default function CartPage() {
                 No hay productos en el carrito.
               </p>
             )}
-            <ul>
+            <ul className="flex gap-y-4 flex-col h-full">
               {cart.items.map((item) => (
                 <CartItem key={item.id} data={item} />
               ))}

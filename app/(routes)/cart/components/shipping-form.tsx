@@ -14,7 +14,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { ChevronUpIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -58,12 +57,6 @@ export default function ShippingForm() {
           className="flex flex-col gap-2"
         >
           <div className="relative flex w-full h-full justify-center items-end gap-x-2">
-            {/* icono cerrar form */}
-            <ChevronUpIcon
-              className="absolute w-5 h-5 right-0 top-0 text-black cursor-pointer"
-              onClick={onClose}
-            />
-
             {/* input nombre y apellido  */}
             <FormField
               control={form.control}
