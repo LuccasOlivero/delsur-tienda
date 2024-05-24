@@ -28,8 +28,7 @@ import { argentinianProvinces, formSchema } from "../validations/formSchema";
 
 export default function ShippingForm() {
   const [loading, setLoading] = useState(false);
-  const { setUserData, onClose, isFormCompleted, onCompleteForm } =
-    useShowForm();
+  const { setUserData, isFormCompleted, onCompleteForm } = useShowForm();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -322,7 +321,7 @@ export default function ShippingForm() {
               {form.formState.errors.emailA.message}
             </FormMessage>
           )}
-          <Button type="submit">
+          <Button type="submit" disabled={loading}>
             {isFormCompleted ? "Actualizar" : "Guardar y enviar"}
           </Button>
         </form>
