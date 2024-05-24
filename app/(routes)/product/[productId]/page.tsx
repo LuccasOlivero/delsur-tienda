@@ -5,7 +5,6 @@ import Gallery from "@/app/components/gallery";
 import Info from "@/app/components/info";
 import ProductList from "@/app/components/product-list";
 import Container from "@/app/components/ui/container";
-import { Suspense } from "react";
 
 interface ProductPageProps {
   params: {
@@ -24,6 +23,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) {
     return null;
   }
+
   return (
     <div className="bg-white">
       <Container>
