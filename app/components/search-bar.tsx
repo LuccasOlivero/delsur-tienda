@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState, ReactNode } from "react";
+import { ChangeEvent, useState, ReactNode, useEffect, useRef } from "react";
 import Link from "next/link";
 import Fuse from "fuse.js";
 
@@ -15,6 +15,7 @@ interface ProductListProps {
 interface SearchedLinkProps {
   children: ReactNode;
   item: string;
+  setQuery: (query: string) => void;
 }
 
 // Configuración de fuse.js para la búsqueda de productos
@@ -24,6 +25,8 @@ const fuseOptions = {
 
 export default function SearchBar({ products = [] }: ProductListProps) {
   const [query, setQuery] = useState<string>("");
+  const [active, setActive] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   const fuse = new Fuse(products, fuseOptions);
   const result = fuse.search(query);
@@ -39,14 +42,29 @@ export default function SearchBar({ products = [] }: ProductListProps) {
 
   const productResults = result.map((result) => result.item);
 
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setActive(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
+
   return (
     <div className="relative">
-      <div className="relative flex h-[2.28rem]">
+      <div className="relative flex h-[2.335rem]" ref={ref}>
         <input
           type="text"
           placeholder="Buscá productos..."
           className="shadow-sm bg-slate-50 border w-full h-full rounded-l-3xl px-4 text-sm flex items-center"
           onChange={onQueryChanged}
+          onClick={() => setActive(true)}
           value={query}
         />
         <div className="flex justify-center items-center bg-black shadow-sm border h-full w-[3rem] pr-2 rounded-r-3xl">
@@ -54,25 +72,27 @@ export default function SearchBar({ products = [] }: ProductListProps) {
         </div>
       </div>
 
-      <div className="w-full bg-slate-50 absolute rounded-lg top-[2.5rem] left-0 z-10 flex flex-col overflow-hidden">
-        {productResults.map((item) => (
-          <SearchedLink key={item.id} item={item.id}>
-            <Search className="absolute left-[.3rem] w-4" /> {item.name}
-          </SearchedLink>
-        ))}
-      </div>
+      {active && (
+        <div className="w-full bg-slate-50 absolute rounded-lg top-[2.5rem] left-0 z-10 flex flex-col overflow-hidden">
+          {productResults.map((item) => (
+            <SearchedLink key={item.id} item={item.id} setQuery={setQuery}>
+              <Search className="absolute left-[.3rem] w-4" /> {item.name}
+            </SearchedLink>
+          ))}
+        </div>
+      )}
     </div>
   );
+}
 
-  function SearchedLink({ children, item }: SearchedLinkProps) {
-    return (
-      <Link
-        onClick={() => setQuery("")}
-        href={`/product/${item}`}
-        className="w-full flex items-center font-semibold text-sm py-2 hover:bg-slate-100 pl-6 pr-4"
-      >
-        {children}
-      </Link>
-    );
-  }
+function SearchedLink({ children, item, setQuery }: SearchedLinkProps) {
+  return (
+    <Link
+      onClick={() => setQuery("")}
+      href={`/product/${item}`}
+      className="w-full flex items-center font-semibold text-sm py-2 hover:bg-slate-100 pl-6 pr-4"
+    >
+      {children}
+    </Link>
+  );
 }
