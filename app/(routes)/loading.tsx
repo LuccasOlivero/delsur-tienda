@@ -10,8 +10,8 @@ export default function BillboardSkeleton() {
           <ImageIcon className="w-10 h-10" size={20} color="gray" />
         </div>
 
-        {/* <---------------------------- CARDS LOADER ----------------------------> */}
-        <div className="relative w-full h-[15rem] grid grid-cols-6 mb-8 gap-x-4">
+        {/* <---------------------------- CATEGORY CARDS LOADER ----------------------------> */}
+        <div className="relative w-full h-[15rem] grid grid-cols-6 mb-8 gap-x-4 max-md:grid-cols-3 max-md:h-auto gap-y-4 max-sm:grid-cols-1">
           {Array.from({ length: 6 }).map((_, index) => (
             <CardSkeleton key={index} />
           ))}
@@ -39,7 +39,7 @@ function CardSkeleton() {
       <span className="rounded-full w-16 h-16 m-auto skeleton"></span>
 
       {/* description */}
-      <span className="w-full h-[2rem] skeleton mb-[1rem] rounded-md"></span>
+      <span className="w-full h-6 skeleton mb-[1rem] rounded-md"></span>
       <span className="skeleton h-6 w-full rounded-md flex items-center justify-center font-semibold text-xs"></span>
     </div>
   );

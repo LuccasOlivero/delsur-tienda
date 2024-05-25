@@ -7,6 +7,7 @@ import Container from "@/app/components/ui/container";
 import ProductList from "@/app/components/product-list";
 import CategoriesCards from "@/app/components/categories-card";
 import getCategories from "@/actions/get-catgories";
+import BillboardSkeleton from "./loading";
 
 export const revalidate = 0;
 

@@ -13,10 +13,9 @@ import type { Metadata } from "next";
 const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DelSur - Tienda",
+  title: "DecoDelSur",
   description: "Tienda",
 };
-// cuando haces click en un producto se carga un loading raro, ver
 
 export default function RootLayout({
   children,
