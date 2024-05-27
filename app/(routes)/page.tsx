@@ -7,13 +7,12 @@ import Container from "@/app/components/ui/container";
 import ProductList from "@/app/components/product-list";
 import CategoriesCards from "@/app/components/categories-card";
 import getCategories from "@/actions/get-catgories";
-import BillboardSkeleton from "./loading";
 
 export const revalidate = 0;
 
 export default async function HomePage() {
   // portada de la pagina principal de la tienda
-  const billboard = await getBillboard("04a7d02b-9fbb-4e98-93bd-0f9ac3b346bd");
+  const billboard = await getBillboard(process.env.BILLBOARD_ID!);
   const productsFeatured = await getProductsFeatured({ isFeatured: true });
   const allProducts = await getAllProducts();
   const categories = await getCategories();
