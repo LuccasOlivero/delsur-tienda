@@ -11,6 +11,7 @@ interface CategoriesCardsProps {
   label: string;
   onClick: () => void;
 }
+
 const categoriesData = [
   {
     title: "Electrónica",
@@ -50,7 +51,6 @@ const categoriesData = [
     label: "Ver medios de pago",
     link: "#",
   },
-  // Puedes agregar más objetos de categorías aquí según sea necesario
 ];
 
 interface categoriesProps {

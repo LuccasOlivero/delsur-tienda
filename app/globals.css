@@ -55,3 +55,7 @@
     transform: rotate(360deg);
   }
 }
+
+.mask-image {
+  mask-image: linear-gradient(black 65%, transparent);
+}
