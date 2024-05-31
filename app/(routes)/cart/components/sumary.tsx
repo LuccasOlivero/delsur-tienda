@@ -57,7 +57,8 @@ export default function Summary() {
       );
 
       window.location = res.data.url;
-    } catch (error) {
+    } catch (error: any) {
+      console.error(error.response.data);
       throw new Error(`ERROR_SUMARY, ${error}`);
     } finally {
       setLoading(false);

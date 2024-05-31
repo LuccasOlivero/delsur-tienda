@@ -76,7 +76,7 @@ export default function Footer() {
           Copyright &copy; {new Date().getFullYear()}, DelSur S.R.L.
         </h4>
         <p className="text-xs text-black font-light">
-          Echo por{" "}
+          Hecho por{" "}
           <a
             href="https://www.linkedin.com/in/lucas-olivero-319090264/"
             className="hover:font-semibold hover:text-[#3782F7]"
