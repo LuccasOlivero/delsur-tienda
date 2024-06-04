@@ -53,6 +53,11 @@ export default function Summary() {
         {
           productIds: items.map((item) => item.id),
           userData,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
