@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 import getCategories from "@/actions/get-catgories";
 import getAllProducts from "@/actions/get-all-products";

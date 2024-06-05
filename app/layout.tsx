@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   description: "Tienda",
 };
 
+// TODO: hcaer las peticiones secundarias, primero que se cargue el producto principal y despues los suggested products
 export default function RootLayout({
   children,
 }: Readonly<{

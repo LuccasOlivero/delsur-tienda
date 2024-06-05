@@ -11,7 +11,7 @@ import getCategories from "@/actions/get-catgories";
 export const revalidate = 0;
 
 export default async function HomePage() {
-  // portada de la pagina principal de la tienda
+  // id de la portada de la pagina principal de la tienda
   const billboard = await getBillboard(process.env.BILLBOARD_ID!);
   const productsFeatured = await getProductsFeatured({ isFeatured: true });
   const allProducts = await getAllProducts();

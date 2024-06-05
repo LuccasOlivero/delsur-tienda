@@ -1,6 +1,7 @@
 import getCategory from "@/actions/get-category";
 import getColors from "@/actions/get-colors";
 import getProducts from "@/actions/get-products";
+
 import Billboard from "@/app/components/billboard";
 import Container from "@/app/components/ui/container";
 import NoResults from "@/app/components/ui/no-results";

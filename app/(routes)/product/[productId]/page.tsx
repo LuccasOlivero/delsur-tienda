@@ -15,7 +15,6 @@ interface ProductPageProps {
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getProduct(params.productId);
 
-  // TODO: hcaer esta peticion secundaria, primero que se cargue el producto principal y despues los suggested products
   const suggestedProducts = await getProducts({
     categoryId: product?.category?.id,
   });

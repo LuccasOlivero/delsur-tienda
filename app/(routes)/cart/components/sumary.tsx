@@ -21,8 +21,8 @@ export default function Summary() {
   useEffect(() => {
     if (searchParams.get("success")) {
       toast.success(
-        "Pago completado! Te va a llegar un mail con info de tu pedido.",
-        { duration: 5000 }
+        "Pago completado! En breve nos comunicaremos con los detalles de tu pedido.",
+        { duration: 6000 }
       );
       removeAll();
     }
