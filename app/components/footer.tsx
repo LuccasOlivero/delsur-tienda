@@ -20,8 +20,8 @@ export default function Footer() {
           <div className="h-full w-full">
             <h3 className="font-medium text-base">Elegí cómo pagar</h3>
             <p className="font-light text-sm text-pretty">
-              Podés pagar con tarjeta, tarjeta de débito o credito hasta 12
-              cuotas sin tarjeta con Mercado Crédito!
+              ¡Podés pagar con tarjeta de débito, crédito o hasta en 12 cuotas
+              sin tarjeta usando Mercado Crédito!
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export default function Footer() {
           <div className="h-full w-full">
             <h3 className="font-medium text-base">Seguridad</h3>
             <p className="font-light text-sm text-pretty">
-              Te garantiazamos la llegada del productos en menos de 12 dias. Con
+              Te garantiazamos la llegada del productos en menos de 7 dias. Con
               nosotros tu compra está siempre protegida.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function Footer() {
           Copyright &copy; {new Date().getFullYear()}, DelSur S.R.L.
         </h4>
         <p className="text-xs text-black font-light">
-          Hecho por{" "}
+          Desarrollado por {""}
           <a
             href="https://www.linkedin.com/in/lucas-olivero-319090264/"
             className="hover:font-semibold hover:text-[#3782F7]"

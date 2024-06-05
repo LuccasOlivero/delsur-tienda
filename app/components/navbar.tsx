@@ -34,7 +34,7 @@ export default async function Navbar() {
 
             <MainNav data={categories} />
 
-            <div className="w-full flex justify-end pr-4 max-lg:hidden">
+            <div className="w-full flex justify-end pr-4 max-sm:pl-4">
               <SearchBar products={allProducts} />
             </div>
 
