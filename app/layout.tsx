@@ -18,6 +18,8 @@ export const metadata: Metadata = {
 };
 
 // TODO: hcaer las peticiones secundarias, primero que se cargue el producto principal y despues los suggested products
+// TODO: no andan los graficos de ventas e ingresos
+// TODO: meorar el ts de todo la tienda
 export default function RootLayout({
   children,
 }: Readonly<{

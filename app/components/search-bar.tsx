@@ -18,7 +18,7 @@ interface SearchedLinkProps {
   setQuery: (query: string) => void;
 }
 
-// Configuración de fuse.js para la búsqueda de productos
+// configuration of fuse.js for product search
 const fuseOptions = {
   keys: ["name"],
 };
@@ -34,7 +34,7 @@ export default function SearchBar({ products = [] }: ProductListProps) {
   function onQueryChanged(e: ChangeEvent<HTMLInputElement>) {
     const inputValue = e.target.value;
 
-    // Validar el valor del input del usuario
+    // validation of the user input
     if (/^[a-zA-Z\s]*$/.test(inputValue) || inputValue === "") {
       setQuery(inputValue);
     }
@@ -44,21 +44,20 @@ export default function SearchBar({ products = [] }: ProductListProps) {
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
+      if (active && ref.current && !ref.current.contains(e.target as Node)) {
         setActive(false);
-      }
+      } else return;
     }
-
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [ref]);
+  }, [ref, active]);
 
   return (
-    <div className="relative">
-      <div className="relative flex h-[2.335rem]" ref={ref}>
+    <div className="relative" ref={ref}>
+      <div className="relative flex h-[2.335rem]">
         <input
           type="text"
           placeholder="Buscá productos..."
