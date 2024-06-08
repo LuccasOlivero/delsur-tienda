@@ -7,6 +7,7 @@ import Fuse from "fuse.js";
 import { Product } from "@/types";
 
 import { Search, SearchIcon } from "lucide-react";
+import SearchedLink from "./searched-link";
 
 interface ProductListProps {
   products?: Product[];
@@ -40,14 +41,16 @@ export default function SearchBar({ products = [] }: ProductListProps) {
     }
   }
 
-  const productResults = result.map((result) => result.item);
+  const productResults = result.map((result) => result.item).slice(0, 6);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (active && ref.current && !ref.current.contains(e.target as Node)) {
         setActive(false);
+        setQuery("");
       } else return;
     }
+
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
@@ -61,7 +64,7 @@ export default function SearchBar({ products = [] }: ProductListProps) {
         <input
           type="text"
           placeholder="Buscá productos..."
-          className="shadow-sm bg-slate-50 border w-full h-full rounded-l-3xl px-4 text-sm flex items-center"
+          className="shadow-sm bg-slate-50 border w-full h-full rounded-l-3xl px-4 text-sm flex items-center focus:outline-[#3877d4] focus:outline-1"
           onChange={onQueryChanged}
           onClick={() => setActive(true)}
           value={query}
@@ -75,23 +78,12 @@ export default function SearchBar({ products = [] }: ProductListProps) {
         <div className="w-full bg-slate-50 absolute rounded-lg top-[2.5rem] left-0 z-10 flex flex-col overflow-hidden">
           {productResults.map((item) => (
             <SearchedLink key={item.id} item={item.id} setQuery={setQuery}>
-              <Search className="absolute left-[.3rem] w-4" /> {item.name}
+              <Search className="absolute left-[.1rem] w-4" size={14} />{" "}
+              {item.name}
             </SearchedLink>
           ))}
         </div>
       )}
     </div>
-  );
-}
-
-function SearchedLink({ children, item, setQuery }: SearchedLinkProps) {
-  return (
-    <Link
-      onClick={() => setQuery("")}
-      href={`/product/${item}`}
-      className="w-full flex items-center font-semibold text-sm py-2 hover:bg-slate-100 pl-6 pr-4"
-    >
-      {children}
-    </Link>
   );
 }
