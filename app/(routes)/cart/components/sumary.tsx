@@ -21,14 +21,14 @@ export default function Summary() {
   useEffect(() => {
     if (searchParams.get("success")) {
       toast.success(
-        "Pago completado! En breve nos comunicaremos con los detalles de tu pedido.",
+        "Pago aprobado! En breve nos comunicaremos con los detalles de tu pedido.",
         { duration: 6000 }
       );
       removeAll();
     }
 
     if (searchParams.get("canceled")) {
-      toast.error("ALgo salió mal.");
+      toast.error("Pago fallido! Intentá de nuevo.");
     }
   }, [searchParams, removeAll]);
 

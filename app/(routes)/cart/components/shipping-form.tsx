@@ -55,44 +55,48 @@ export default function ShippingForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-2"
         >
-          <div className="relative flex w-full h-full justify-center items-end gap-x-2">
+          <div className="relative flex w-full h-full items-end gap-x-2 ">
             {/* input nombre y apellido  */}
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-black text-xs">
-                    Datos de envío
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      className="text-black"
-                      placeholder="Nombre"
-                      disabled={loading}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="surname"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      type="text"
-                      className="text-black"
-                      placeholder="Apellido"
-                      {...field}
-                      disabled={loading}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+            <div className="w-full h-full">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-black text-xs">
+                      Datos de envío
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="text-black"
+                        placeholder="Nombre"
+                        disabled={loading}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="w-full h-full">
+              <FormField
+                control={form.control}
+                name="surname"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        className="text-black"
+                        placeholder="Apellido"
+                        {...field}
+                        disabled={loading}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
           </div>
           {/* <----------------- mensaje de error en el nombre o apellido ----------------->*/}
           {form.formState.errors?.name && (
@@ -222,41 +226,45 @@ export default function ShippingForm() {
           )}
 
           {/* input número de casa o dpto */}
-          <div className="flex w-full h-full justify-center items-end gap-x-2">
-            <FormField
-              control={form.control}
-              name="houseNumber"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      className="text-black"
-                      placeholder="Número de casa/dpto"
-                      {...field}
-                      disabled={loading}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="zipCode"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      className="text-black"
-                      placeholder="Código postal"
-                      {...field}
-                      disabled={loading}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+          <div className="flex w-full h-full items-end gap-x-2">
+            <div className="w-full h-full">
+              <FormField
+                control={form.control}
+                name="houseNumber"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        className="text-black"
+                        placeholder="Número de casa/dpto"
+                        {...field}
+                        disabled={loading}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="w-full h-full">
+              <FormField
+                control={form.control}
+                name="zipCode"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        className="text-black"
+                        placeholder="Código postal"
+                        {...field}
+                        disabled={loading}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
           </div>
           {/* <----------------- mensaje de error en el número de casa o dpto ----------------->*/}
           {form.formState.errors?.houseNumber && (
