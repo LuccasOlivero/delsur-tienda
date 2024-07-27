@@ -8,6 +8,7 @@ import NoResults from "@/app/components/ui/no-results";
 import ProductCard from "@/app/components/ui/product-card";
 import Filter from "./components/filter";
 import MobileFilters from "./components/mobile-filters";
+import PriceFilter from "./components/price-filter";
 
 export const revalidate = 0;
 
@@ -31,6 +32,8 @@ export default async function CategoryPage({
     colorId: searchParams.colorId,
   });
 
+  // const { price } = products;
+
   return (
     <section className="bg-white">
       <Container>
@@ -42,6 +45,7 @@ export default async function CategoryPage({
 
             <div className="hidden lg:block mr-4">
               <Filter valueKey="colorId" name="Colores" data={colors} />
+              <PriceFilter valueKey="price" name="Precio" data={products} />
             </div>
 
             <div className="my-6 lg:col-span-5 lg:mt-0">

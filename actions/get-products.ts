@@ -5,6 +5,7 @@ interface Query {
   categoryId?: string;
   colorId?: string;
   isFeatured?: boolean;
+  price?: string;
 }
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
