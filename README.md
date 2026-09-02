@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛒 Delsur Tienda - Frontend
 
-## Getting Started
+Frontend del e-commerce Delsur. Construido con Next.js 14 (App Router), Tailwind CSS y Zustand.
 
-First, run the development server:
+## 🚀 Características
+- **Next.js App Router**: Navegación rápida y rutas dinámicas.
+- **Incremental Static Regeneration (ISR)**: Páginas estáticas cacheadas que se revalidan en segundo plano (cada 60s) para una velocidad extrema.
+- **SEO Optimizado**: Mapas de sitio automáticos (`sitemap.xml`), `robots.txt` y metadata dinámica (OpenGraph) en productos y categorías.
+- **Carrito de Compras Persistente**: Uso de `Zustand` para almacenar el estado del carrito en `localStorage`, ahora con soporte nativo para gestionar múltiples unidades por producto.
+- **UI Responsiva**: Diseñado con Tailwind CSS, completamente adaptable a dispositivos móviles.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Tecnologías Principales
+- [Next.js 14](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Zustand](https://github.com/pmndrs/zustand)
+- [Axios](https://axios-http.com/)
+- [Mercado Pago](https://www.mercadopago.com.ar/) (Redirección a Checkout)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💻 Entorno de Desarrollo Local
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Instala las dependencias:
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Configura las variables de entorno en el archivo `.env`:
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:3000/api/<TU_STORE_ID>
+   BILLBOARD_ID=<TU_BILLBOARD_ID>
+   ```
+   *(Nota: Asegúrate de tener corriendo el panel `delsur-administrador` para que las rutas API estén disponibles y crear una tienda para obtener los IDs).*
 
-## Learn More
+3. Corre el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. Abre [http://localhost:3001](http://localhost:3001) en tu navegador.
