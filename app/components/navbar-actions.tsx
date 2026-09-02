@@ -19,7 +19,7 @@ export default function NavbarActions() {
       >
         <ShoppingBag size={20} color="white" />
         <span className="ml-2 text-sm font-meduim text-white">
-          {cart.items.length}
+          {cart.items.reduce((total, item) => total + item.quantity, 0)}
         </span>
       </Button>
     </div>

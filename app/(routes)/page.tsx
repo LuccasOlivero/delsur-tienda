@@ -6,9 +6,9 @@ import Billboard from "@/app/components/billboard";
 import Container from "@/app/components/ui/container";
 import ProductList from "@/app/components/product-list";
 import CategoriesCards from "@/app/components/categories-card";
-import getCategories from "@/actions/get-catgories";
+import getCategories from "@/actions/get-categories";
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function HomePage() {
   // id de la portada de la pagina principal de la tienda

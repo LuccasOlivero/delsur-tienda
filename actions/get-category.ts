@@ -9,3 +9,6 @@ const getCategory = async (id: string): Promise<Category> => {
 };
 
 export default getCategory;
+
+
+

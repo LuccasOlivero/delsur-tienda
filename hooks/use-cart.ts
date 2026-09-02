@@ -4,10 +4,16 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 import { Product } from "@/types";
 
+export interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
 interface CartStore {
-  items: Product[];
+  items: CartItem[];
   addItem: (data: Product) => void;
   removeItem: (id: string) => void;
+  decrementItem: (id: string) => void;
   removeAll: () => void;
 }
 
@@ -17,17 +23,36 @@ const useCart = create(
       items: [],
       addItem: (data: Product) => {
         const currentItems = get().items;
-        const existingItem = currentItems.find((item) => item.id === data.id);
+        const existingItem = currentItems.find((item) => item.product.id === data.id);
 
         if (existingItem) {
-          return toast("!Ya está en el carrito!");
+          set({
+            items: currentItems.map((item) =>
+              item.product.id === data.id ? { ...item, quantity: item.quantity + 1 } : item
+            ),
+          });
+          toast.success("Cantidad aumentada en el carrito");
+        } else {
+          set({ items: [...get().items, { product: data, quantity: 1 }] });
+          toast.success("Agregado al carrito");
         }
+      },
+      decrementItem: (id: string) => {
+        const currentItems = get().items;
+        const existingItem = currentItems.find((item) => item.product.id === id);
 
-        set({ items: [...get().items, data] });
-        toast.success("Agregado al carrito");
+        if (existingItem && existingItem.quantity > 1) {
+          set({
+            items: currentItems.map((item) =>
+              item.product.id === id ? { ...item, quantity: item.quantity - 1 } : item
+            ),
+          });
+        } else {
+          set({ items: [...get().items.filter((item) => item.product.id !== id)] });
+        }
       },
       removeItem: (id: string) => {
-        set({ items: [...get().items.filter((item) => item.id !== id)] });
+        set({ items: [...get().items.filter((item) => item.product.id !== id)] });
         toast.success("Eliminado del carrito");
       },
       removeAll: () => set({ items: [] }),

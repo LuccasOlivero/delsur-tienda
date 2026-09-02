@@ -10,7 +10,7 @@ import Filter from "./components/filter";
 import MobileFilters from "./components/mobile-filters";
 import PriceFilter from "./components/price-filter";
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 interface CategoryPageProps {
   params: {
@@ -18,6 +18,14 @@ interface CategoryPageProps {
   };
   searchParams: {
     colorId: string;
+  };
+}
+
+export async function generateMetadata({ params }: CategoryPageProps) {
+  const category = await getCategory(params.categoryId);
+  return {
+    title: `${category?.name || "Categoría"} | Delsur`,
+    description: `Explora nuestros productos en la categoría ${category?.name || ""} de Delsur`,
   };
 }
 

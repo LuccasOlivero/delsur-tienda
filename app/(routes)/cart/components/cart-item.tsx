@@ -8,13 +8,22 @@ import Currency from "@/app/components/ui/currency";
 
 interface CartItemProps {
   data: Product;
+  quantity: number;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ data }) => {
+const CartItem: React.FC<CartItemProps> = ({ data, quantity }) => {
   const cart = useCart();
 
   const onRemove = () => {
     cart.removeItem(data.id);
+  };
+
+  const onIncrement = () => {
+    cart.addItem(data);
+  };
+
+  const onDecrement = () => {
+    cart.decrementItem(data.id);
   };
 
   return (
@@ -22,6 +31,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
         <Image
           fill
+          sizes="(max-width: 640px) 96px, 192px"
           src={data ? data?.images[0].url : ""}
           alt={data?.name}
           className="object-cover object-center"
@@ -45,9 +55,13 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
           </div>
           <Currency value={data.price} className="text-xl max-sm:text-lg" />
         </div>
-        <span className="text-base font-semibold text-black max-sm:text-sm">
-          Unidades: 1
-        </span>
+        <div className="flex items-center gap-x-2 mt-2">
+          <span className="text-base font-semibold text-black max-sm:text-sm mr-2">
+            Unidades: {quantity}
+          </span>
+          <button onClick={onDecrement} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-600 hover:bg-gray-200">-</button>
+          <button onClick={onIncrement} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-600 hover:bg-gray-200">+</button>
+        </div>
       </div>
     </li>
   );

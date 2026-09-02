@@ -32,10 +32,10 @@ export default function Summary() {
     }
   }, [searchParams, removeAll]);
 
-  const products = items.map((item) => item);
+  const products = items.map((item) => item.product);
 
   const totalPrice = items.reduce((total, item) => {
-    return total + Number(item.price);
+    return total + (Number(item.product.price) * item.quantity);
   }, 0);
 
   const onCheckout = async () => {
@@ -51,15 +51,19 @@ export default function Summary() {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
         {
-          productIds: items.map((item) => item.id),
+          productIds: items.flatMap((item) => Array(item.quantity).fill(item.product.id)),
           userData,
         }
       );
 
       window.location = res.data.url;
-    } catch (error: any) {
-      console.error(error.response.data);
-      throw new Error(`ERROR_SUMARY, ${error}`);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        console.error(error.response?.data);
+      } else {
+        console.error(error);
+      }
+      throw new Error(`ERROR_SUMMARY, ${error}`);
     } finally {
       setLoading(false);
     }

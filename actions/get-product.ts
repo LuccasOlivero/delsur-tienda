@@ -7,3 +7,6 @@ export default async function getProduct(id: string): Promise<Product> {
 
   return res.json();
 }
+
+
+

@@ -1,3 +1,6 @@
+import { Suspense } from "react";
+import type { Metadata } from "next";
+
 import getProduct from "@/actions/get-product";
 import getProducts from "@/actions/get-products";
 
@@ -12,12 +15,31 @@ interface ProductPageProps {
   };
 }
 
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const product = await getProduct(params.productId);
+  return {
+    title: product?.name || "Producto Delsur",
+    description: product?.name ? `Comprá ${product.name} en Delsur` : "Detalles del producto",
+    openGraph: {
+      images: product?.images?.[0]?.url ? [product.images[0].url] : [],
+    }
+  };
+}
+
+async function SuggestedProducts({ categoryId }: { categoryId?: string }) {
+  if (!categoryId) return null;
+  const suggestedProducts = await getProducts({ categoryId });
+  return (
+    <ProductList
+      title="Productos relacionados"
+      products={suggestedProducts}
+      className=""
+    />
+  );
+}
+
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getProduct(params.productId);
-
-  const suggestedProducts = await getProducts({
-    categoryId: product?.category?.id,
-  });
 
   if (!product) {
     return null;
@@ -35,11 +57,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
           <hr className="my-10" />
 
-          <ProductList
-            title="Productos relacionados"
-            products={suggestedProducts}
-            className=""
-          />
+          <Suspense fallback={<div className="h-24 flex items-center justify-center">Cargando relacionados...</div>}>
+            <SuggestedProducts categoryId={product?.category?.id} />
+          </Suspense>
         </div>
       </Container>
     </div>

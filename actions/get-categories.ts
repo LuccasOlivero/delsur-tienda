@@ -3,11 +3,10 @@ import { Category } from "@/types";
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/categories`;
 
 export default async function getCategories(): Promise<Category[]> {
-  const res = await fetch(URL, {
-    headers: {
-      "Cache-Control": "must-revalidate, no-cache, no-store, max-age=5",
-    },
-  });
+  const res = await fetch(URL);
+  if (!res.ok) throw new Error("Failed to fetch data from API: " + res.statusText);
   const data = await res.json();
   return data;
 }
+
+

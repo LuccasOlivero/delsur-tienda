@@ -9,3 +9,6 @@ const getColors = async (): Promise<Color[]> => {
 };
 
 export default getColors;
+
+
+

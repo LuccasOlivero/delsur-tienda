@@ -5,14 +5,12 @@ import { useEffect, useState } from "react";
 import useCart from "@/hooks/use-cart";
 
 import CartItem from "./components/cart-item";
-import Summary from "./components/sumary";
+import Summary from "./components/summary";
 
 import Container from "@/app/components/ui/container";
 import ShippingForm from "./components/shipping-form";
 import useShowForm from "@/hooks/use-show-form";
 import { Button } from "@/components/ui/button";
-
-export const revalidate = 0;
 
 export default function CartPage() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -43,7 +41,7 @@ export default function CartPage() {
             )}
             <ul className="flex gap-y-4 flex-col h-full">
               {cart.items.map((item) => (
-                <CartItem key={item.id} data={item} />
+                <CartItem key={item.product.id} data={item.product} quantity={item.quantity} />
               ))}
             </ul>
           </div>

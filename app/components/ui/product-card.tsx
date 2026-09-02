@@ -1,9 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { Product } from "@/types";
 import { MouseEventHandler } from "react";
-import { useRouter } from "next/navigation";
 
 import useCart from "@/hooks/use-cart";
 import usePreviewModal from "@/hooks/use-review-modals";
@@ -19,26 +19,23 @@ interface ProductCard {
 export default function ProductCard({ data }: ProductCard) {
   const previewModal = usePreviewModal();
   const cart = useCart();
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push(`/product/${data?.id}`);
-  };
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
     e.stopPropagation();
     previewModal.onOpen(data);
   };
 
   const onAddtoCart: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
     e.stopPropagation();
     cart.addItem(data);
   };
 
   return (
-    <div
-      className="group cursor-pointer rounded-xl p-2 space-y-4 bg-white shadow-sm"
-      onClick={handleClick}
+    <Link
+      href={`/product/${data?.id}`}
+      className="group cursor-pointer rounded-xl p-2 space-y-4 bg-white shadow-sm block"
     >
       {/* images and actions */}
       <div className="aspect-square rounded-xl relative">
@@ -46,9 +43,10 @@ export default function ProductCard({ data }: ProductCard) {
         {data?.images?.[0]?.url && (
           <Image
             src={data?.images?.[0]?.url}
-            alt="Image product"
+            alt={data?.name || "Product image"}
             width={500}
             height={500}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="aspect-square object-cover rounded-md"
           />
         )}
@@ -70,7 +68,7 @@ export default function ProductCard({ data }: ProductCard) {
 
       {/* description */}
       <div>
-        <p className="font-semibol text-base">{data.name}</p>
+        <p className="font-semibold text-base">{data.name}</p>
         <p className="text-sm text-green-500 font-semibold">Envío gratis</p>
       </div>
 
@@ -78,6 +76,6 @@ export default function ProductCard({ data }: ProductCard) {
       <div className="flex items-center justify-between text-xl">
         <Currency value={data?.price} />
       </div>
-    </div>
+    </Link>
   );
 }

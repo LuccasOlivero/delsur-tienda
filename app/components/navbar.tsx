@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import getCategories from "@/actions/get-catgories";
+import getCategories from "@/actions/get-categories";
 import getAllProducts from "@/actions/get-all-products";
 
 import Slider from "./slider";
@@ -9,7 +9,7 @@ import SearchBar from "./search-bar";
 import NavbarActions from "./navbar-actions";
 import Container from "./ui/container";
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function Navbar() {
   const categories = await getCategories();

@@ -22,11 +22,11 @@ export default async function getProductsFeatured(
     },
   });
 
-  const res = await fetch(url, {
-    headers: {
-      "Cache-Control": "must-revalidate, no-cache, no-store, max-age=5",
-    },
-  });
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Failed to fetch data from API: " + res.statusText);
   const data = await res.json();
   return data;
 }
+
+
+
